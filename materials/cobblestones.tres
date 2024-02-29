@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cjjba7srjvvd2"]
+
+[ext_resource type="Texture2D" uid="uid://cl4rbs8x343u8" path="res://textures/cobbles/Cobbles_diffuseOriginal.jpg" id="1_uetw7"]
+[ext_resource type="Texture2D" uid="uid://bpxya05lvr0nx" path="res://textures/cobbles/Cobbles_ao.jpg" id="2_p8h80"]
+[ext_resource type="Texture2D" uid="uid://dpd5dhhmab2tw" path="res://textures/cobbles/Cobbles_height.jpg" id="3_v7ybv"]
+[ext_resource type="Texture2D" uid="uid://dciesk8tp3xfx" path="res://textures/cobbles/Cobbles_normal.jpg" id="4_jg3gc"]
+[ext_resource type="Texture2D" uid="uid://dl1w0y67keqde" path="res://textures/cobbles/Cobbles_smoothness.jpg" id="5_6njsv"]
+
+[resource]
+albedo_texture = ExtResource("1_uetw7")
+roughness = 0.14
+roughness_texture = ExtResource("5_6njsv")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_jg3gc")
+ao_enabled = true
+ao_light_affect = 0.17
+ao_texture = ExtResource("2_p8h80")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_v7ybv")
+uv1_scale = Vector3(5, 5, 5)

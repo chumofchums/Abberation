@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmxvgauvx41nb"]
+
+[ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
+[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="2_kbh0v"]
+
+[node name="world" type="Node3D"]
+
+[node name="level" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+material_override = ExtResource("1_0et4a")
+size = Vector3(20, 0.1, 20)
+
+[node name="HedgeWall" type="CSGBox3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.15558, 7.26719)
+material_override = ExtResource("2_kbh0v")
+size = Vector3(9, 2.25098, 1)
