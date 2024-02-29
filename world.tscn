@@ -8,11 +8,26 @@
 [node name="level" type="Node3D" parent="."]
 
 [node name="Ground" type="CSGBox3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
 material_override = ExtResource("1_0et4a")
-size = Vector3(20, 0.1, 20)
+size = Vector3(18.7563, 0.1, 17.1201)
 
 [node name="HedgeWall" type="CSGBox3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.15558, 7.26719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15558, 7.26719)
 material_override = ExtResource("2_kbh0v")
-size = Vector3(9, 2.25098, 1)
+size = Vector3(18, 2.25098, 1)
+
+[node name="HedgeWall2" type="CSGBox3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15558, -8.4018)
+material_override = ExtResource("2_kbh0v")
+size = Vector3(18, 2.25098, 1)
+
+[node name="HedgeWall3" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.00827, 1.15558, -0.512254)
+material_override = ExtResource("2_kbh0v")
+size = Vector3(16.1713, 2.25098, 1)
+
+[node name="HedgeWall4" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.98848, 1.15558, -0.512254)
+material_override = ExtResource("2_kbh0v")
+size = Vector3(16.1713, 2.25098, 1)
