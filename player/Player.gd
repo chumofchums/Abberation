@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var visuals: Node3D = $visuals
+@onready var camera_boom: Node3D = $camera_boom
 
 
 const WALK_SPEED= 5.0
@@ -11,6 +12,7 @@ var speed
 var gravity: float = 9.0
 
 func _ready() -> void:
+	Globals.Player = self
 	speed = WALK_SPEED
 
 func _physics_process(delta: float) -> void:
