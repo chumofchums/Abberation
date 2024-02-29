@@ -1,21 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn05ucbbktbtv"]
+[gd_scene load_steps=8 format=3 uid="uid://dn05ucbbktbtv"]
 
 [ext_resource type="Script" path="res://guard.gd" id="1_t0c1g"]
 [ext_resource type="Material" uid="uid://b82cox21okduo" path="res://materials/enemy.material" id="2_xcdr1"]
+[ext_resource type="PackedScene" uid="uid://d1xu038n6ksd0" path="res://patrol.tscn" id="3_1x4kb"]
+[ext_resource type="PackedScene" uid="uid://q1p6urfuuyri" path="res://cone.tscn" id="4_j1mga"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3bhdj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_okocw"]
+points = PackedVector3Array(-0.896022, -0.955907, -0.388314, 0.0286088, 0.919081, 0.0286088, 0.0572855, 0.690129, 0.143754, 0.743815, -0.952232, -0.624879, 0.18069, -0.964436, 0.964436, -0.743864, -0.952296, 0.624921, 0.896009, -0.955893, 0.388308, -0.180872, -0.9644, -0.9644, 0.964436, -0.964436, -0.18069, -0.964436, -0.964436, 0.18069, -0.0286088, 0.919081, -0.0286088, -0.388308, -0.955893, 0.896009, 0.388314, -0.955907, -0.896022, -0.659999, -0.960203, -0.720152, 0.659976, -0.960171, 0.720128, 0.0286088, 0.919081, -0.0286088, -0.0286088, 0.919081, 0.0286088, -0.180872, -0.9644, 0.9644, 0.18069, -0.964436, -0.964436, 0.964436, -0.964436, 0.18069, -0.964436, -0.964436, -0.18069, -0.388314, -0.955907, -0.896022, 0.388308, -0.955893, 0.896009, 0.896009, -0.955893, -0.388308, -0.896022, -0.955907, 0.388314, 0.515753, -0.859528, -0.773539, -0.515576, -0.859533, 0.773544, -0.773539, -0.859528, -0.515753, 0.773412, -0.859387, 0.515668, 0.515668, -0.859387, 0.773412, -0.515661, -0.859674, -0.773671, 0.659999, -0.960203, -0.720152)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_55fub"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
-[node name="Guard" type="CharacterBody3D"]
+[node name="Guard" type="CharacterBody3D" node_paths=PackedStringArray("patrol_direction")]
 script = ExtResource("1_t0c1g")
+patrol_direction = NodePath("patrol")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="visuals" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_3bhdj")
 surface_material_override/0 = ExtResource("2_xcdr1")
 
+[node name="VisionArea" type="Area3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Cone" parent="visuals/VisionArea" instance=ExtResource("4_j1mga")]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 1.38729, -1.58247)
+layers = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="visuals/VisionArea"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 1.38729, -1.58247)
+shape = SubResource("ConvexPolygonShape3D_okocw")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_55fub")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="patrol" parent="." instance=ExtResource("3_1x4kb")]
+group_name = "Guard"
+
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="VisionTimer" to="." method="_on_vision_timer_timeout"]

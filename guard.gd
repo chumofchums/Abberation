@@ -1,31 +1,42 @@
 extends CharacterBody3D
 
+@onready var nav: NavigationAgent3D = $NavigationAgent3D
+@onready var vision_area: Area3D = $visuals/VisionArea
+@onready var visuals: MeshInstance3D = $visuals
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export var patrol_direction: Node3D
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+const PATROL_SPEED = 2
+const CHASE_SPEED = 3
 
+var speed = 2
+var acceleration = 10
+var direction: Vector3 = Vector3.ZERO
+var player_spotted: bool = false
+
+var rotation_speed := 20.0
+
+func _ready() -> void:
+	speed = PATROL_SPEED
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	if !player_spotted:
+		velocity = patrol_direction.direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		speed = CHASE_SPEED
+		nav.target_position = Globals.Player.global_transform.origin
+		direction = nav.get_next_path_position() - global_position
+		direction = direction.normalized()
 
+		velocity = velocity.lerp(direction * speed, acceleration * delta)
+
+	var weight := 1.0 - pow(0.5, delta * rotation_speed)
+	visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
 	move_and_slide()
+
+func _on_vision_timer_timeout() -> void:
+	var overlaps = vision_area.get_overlapping_bodies()
+	if overlaps.size() > 0:
+		for overlap in overlaps:
+			if overlap.name == "Player":
+				player_spotted = true
