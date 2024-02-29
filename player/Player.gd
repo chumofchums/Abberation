@@ -24,11 +24,17 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var rotation_speed := 20.0
+	var weight := 1.0 - pow(0.5, delta * rotation_speed)
+	
+	
+	
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		
-		visuals.look_at(direction + position)
+		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
