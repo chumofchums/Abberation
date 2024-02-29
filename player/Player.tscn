@@ -36,4 +36,4 @@ mesh = SubResource("BoxMesh_sv55c")
 surface_material_override/0 = SubResource("StandardMaterial3D_b4a85")
 
 [node name="camera_boom" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.830285, 0.557339, 0, -0.557339, 0.830285, 0, 7.78088, 7.1633)
+transform = Transform3D(1, 0, 0, 0, 0.830285, 0.557339, 0, -0.557339, 0.830285, 0, 6.82295, 7.80632)

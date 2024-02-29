@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var visuals: Node3D = $visuals
 @onready var camera_boom: Node3D = $camera_boom
 
-
 const WALK_SPEED= 5.0
 const SPRINT_SPEED = 8.0
 #const JUMP_VELOCITY = 4.5
