@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=4 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="2_kbh0v"]
+[ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/Player.tscn" id="3_opcvc"]
 
 [node name="world" type="Node3D"]
 
@@ -10,24 +11,34 @@
 [node name="Ground" type="CSGBox3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
 material_override = ExtResource("1_0et4a")
+use_collision = true
 size = Vector3(18.7563, 0.1, 17.1201)
 
 [node name="HedgeWall" type="CSGBox3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15558, 7.26719)
 material_override = ExtResource("2_kbh0v")
+use_collision = true
 size = Vector3(18, 2.25098, 1)
 
 [node name="HedgeWall2" type="CSGBox3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15558, -8.4018)
 material_override = ExtResource("2_kbh0v")
+use_collision = true
 size = Vector3(18, 2.25098, 1)
 
 [node name="HedgeWall3" type="CSGBox3D" parent="level"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.00827, 1.15558, -0.512254)
 material_override = ExtResource("2_kbh0v")
+use_collision = true
 size = Vector3(16.1713, 2.25098, 1)
 
 [node name="HedgeWall4" type="CSGBox3D" parent="level"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.98848, 1.15558, -0.512254)
 material_override = ExtResource("2_kbh0v")
+use_collision = true
 size = Vector3(16.1713, 2.25098, 1)
+
+[node name="Player" parent="." instance=ExtResource("3_opcvc")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.942016, 0.335567, 0, -0.335567, 0.942016, 0, 3.58385, 5.8615)
