@@ -5,9 +5,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ypdt7"]
 shader = ExtResource("2_m5sjt")
-shader_parameter/MULTIPLIER = 0.5
-shader_parameter/SCALE = 0.3
-shader_parameter/SOFTNESS = 0.675
+shader_parameter/MULTIPLIER = 0.64
+shader_parameter/SCALE = 1.155
+shader_parameter/SOFTNESS = 0.2
 shader_parameter/BASE_OPACITY = 1.0
 
 [node name="CameraRig" type="Node3D"]

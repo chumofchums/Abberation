@@ -30,39 +30,91 @@ environment = SubResource("Environment_0fg2b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
 material_override = ExtResource("1_0et4a")
 use_collision = true
-size = Vector3(18.7563, 0.1, 17.1201)
+size = Vector3(36, 0.1, 34)
 
 [node name="HedgeWall" type="CSGBox3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 7.267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 16.1377)
 layers = 2
 material_override = ExtResource("2_kbh0v")
 use_collision = true
-size = Vector3(18, 4, 1)
+size = Vector3(36, 4, 1)
 
 [node name="HedgeWall2" type="CSGBox3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -8.402)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -16.9838)
 material_override = ExtResource("2_kbh0v")
 use_collision = true
-size = Vector3(18, 4, 1)
+size = Vector3(36, 4, 1)
 
 [node name="HedgeWall3" type="CSGBox3D" parent="level"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.008, 2, -0.512)
+transform = Transform3D(-4.37312e-08, 0, 1.00045, 0, 1.00045, 0, -1.00045, 0, -4.37312e-08, 18.1068, 2, -0.512)
 material_override = ExtResource("2_kbh0v")
 use_collision = true
-size = Vector3(16.171, 4, 1)
+size = Vector3(34, 4, 1)
 
 [node name="HedgeWall4" type="CSGBox3D" parent="level"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.988, 2, -0.512)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.9834, 2, -0.512)
 material_override = ExtResource("2_kbh0v")
 use_collision = true
-size = Vector3(16.171, 4, 1)
+size = Vector3(34, 4, 1)
 
 [node name="HedgeWall5" type="CSGBox3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59749, 2, -2.80614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.23543, 2, -2.80614)
 layers = 2
 material_override = ExtResource("2_kbh0v")
 use_collision = true
-size = Vector3(3.66895, 4, 1)
+size = Vector3(14.9448, 4, 1)
+script = ExtResource("3_cvm21")
+
+[node name="HedgeWall8" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.2952, 2, 11.2333)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(9.12915, 4, 1)
+
+[node name="HedgeWall9" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.4606, 2, 11.2333)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(9.12915, 4, 1)
+
+[node name="HedgeWall10" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.892, 2, 5.06292)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(15.0491, 4, 1)
+
+[node name="HedgeWall11" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, 4.88563)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(15.0491, 4, 1)
+
+[node name="HedgeWall12" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, -12.4545)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(8.7757, 4, 1)
+
+[node name="HedgeWall13" type="CSGBox3D" parent="level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.17186, 2, -12.4545)
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(8.7757, 4, 1)
+
+[node name="HedgeWall14" type="CSGBox3D" parent="level"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.73961, 2, -12.4545)
+layers = 2
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(8.7757, 4, 1)
+script = ExtResource("3_cvm21")
+
+[node name="HedgeWall15" type="CSGBox3D" parent="level"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.23842, 2, 11.9087)
+layers = 2
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(8.7757, 4, 1)
 script = ExtResource("3_cvm21")
 
 [node name="HedgeWall6" type="CSGBox3D" parent="level"]
@@ -73,8 +125,16 @@ use_collision = true
 size = Vector3(3.66895, 4, 1)
 script = ExtResource("3_cvm21")
 
+[node name="HedgeWall7" type="CSGBox3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3525, 2, -2.80614)
+layers = 2
+material_override = ExtResource("2_kbh0v")
+use_collision = true
+size = Vector3(9.58789, 4, 1)
+script = ExtResource("3_cvm21")
+
 [node name="Player" parent="." instance=ExtResource("3_opcvc")]
-transform = Transform3D(0.999987, -0.00290081, 0.00409074, 0.00290949, 0.999994, -0.00211622, -0.00408457, 0.00212809, 0.999989, 0, 0, 0)
+transform = Transform3D(0.999987, -0.00290081, 0.00409074, 0.00290949, 0.999994, -0.00211622, -0.00408457, 0.00212809, 0.999989, -14.8037, 0, 13.5627)
 
 [node name="CameraRig" parent="." instance=ExtResource("4_kucr0")]
 
