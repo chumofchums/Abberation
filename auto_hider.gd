@@ -3,7 +3,7 @@ extends CSGBox3D
 var layer = 0
 
 func _process(delta: float) -> void:
-	if Globals.Player.position.z > position.z - self.size.z / 2:
+	if Globals.Player.position.z > position.z: #- self.size.z / 2:
 		set_to_background()
 	else:
 		set_to_foreground()

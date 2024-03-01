@@ -58,4 +58,5 @@ down={
 
 [layer_names]
 
+3d_render/layer_2="obstacles"
 3d_physics/layer_2="player"
