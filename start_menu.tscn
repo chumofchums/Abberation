@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpv50h8qtcfvv"]
+[gd_scene load_steps=9 format=3 uid="uid://cpv50h8qtcfvv"]
 
 [ext_resource type="Script" path="res://StartMenu.gd" id="1_tm825"]
-[ext_resource type="FontFile" uid="uid://l52budqj3scx" path="res://fonts/OldLondon.ttf" id="2_0axsv"]
+[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="2_xlcts"]
+[ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="3_rxbai"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6wal"]
 
@@ -25,6 +26,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_xlcts")
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rxbai")
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 1
@@ -43,57 +54,55 @@ layout_mode = 2
 
 [node name="Game Title" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0axsv")
+theme = ExtResource("2_xlcts")
 theme_override_font_sizes/font_size = 200
-text = "GruelHub"
+text = "GRUELHUB"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 50
 
 [node name="Start Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_0axsv")
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kbpb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
-text = "START"
+text = "Start"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 
 [node name="Settings Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_0axsv")
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kbpb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
-text = "SETTINGS"
+text = "Settings"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 
 [node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_0axsv")
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kbpb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
-text = "QUIT"
+text = "Quit"
 
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

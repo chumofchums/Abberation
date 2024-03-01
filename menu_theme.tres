@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cmv7tmblhvfuo"]
+
+[ext_resource type="FontFile" uid="uid://dlnbj6iiqfyai" path="res://fonts/MedievalSharp-Regular.ttf" id="1_g4fdc"]
+
+[resource]
+default_font = ExtResource("1_g4fdc")
+Button/colors/font_color = Color(0.376471, 0.423529, 0.364706, 1)
+Button/colors/font_hover_color = Color(1, 0.956863, 0.956863, 1)
+Button/colors/font_hover_pressed_color = Color(0.945098, 0.764706, 0.462745, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.945098, 0.764706, 0.462745, 1)
+Button/constants/outline_size = 8
+Label/colors/font_color = Color(0.945098, 0.764706, 0.462745, 1)
+Label/colors/font_outline_color = Color(0.376471, 0.423529, 0.364706, 1)
+Label/constants/outline_size = 30

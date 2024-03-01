@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=33 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://player/PlayerUI.gd" id="6_4wkan"]
 [ext_resource type="Script" path="res://player/GruelTemperature.gd" id="7_vxugl"]
 [ext_resource type="Script" path="res://player/FailScreen.gd" id="8_0fhs1"]
-[ext_resource type="FontFile" uid="uid://l52budqj3scx" path="res://fonts/OldLondon.ttf" id="9_ovter"]
+[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="8_ftefi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_757gv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,7 +21,10 @@ sky_material = SubResource("ProceduralSkyMaterial_757gv")
 [sub_resource type="Environment" id="Environment_0fg2b"]
 background_mode = 2
 sky = SubResource("Sky_t0qja")
+ambient_light_source = 3
+ambient_light_color = Color(0.964706, 0.964706, 0.964706, 1)
 tonemap_mode = 2
+sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o18lv"]
@@ -44,6 +47,8 @@ albedo_color = Color(0, 0.301961, 0.427451, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4a85"]
 albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxvy"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reccp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibwtb"]
@@ -53,6 +58,93 @@ albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i56ql"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_po6ft"]
+
+[sub_resource type="Animation" id="Animation_mvbuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FailScreen/Gruel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 223)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FailScreen/Has:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1300, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FailScreen/Cooled:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FailScreen/Cooled:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(446.5, 1000)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FailScreen/Cooled:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FailScreen/VBoxContainer/Retry Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FailScreen/VBoxContainer/Menu Button:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_nd1u1"]
 resource_name = "fail_screen"
@@ -154,97 +246,37 @@ tracks/7/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_mvbuc"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
+_data = {
+"RESET": SubResource("Animation_mvbuc"),
+"fail_screen": SubResource("Animation_nd1u1")
+}
+
+[sub_resource type="Animation" id="Animation_ib3b6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FailScreen/Gruel:position")
+tracks/0/path = NodePath("CutsceneCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-500, 223)]
+"values": [Vector3(0, 14.6999, 21.1733)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FailScreen/Has:position")
+tracks/1/path = NodePath("ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1300, 320)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FailScreen/Cooled:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FailScreen/Cooled:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(446.5, 1000)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FailScreen/Cooled:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FailScreen/VBoxContainer/Retry Button:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FailScreen/VBoxContainer/Menu Button:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
-_data = {
-"RESET": SubResource("Animation_mvbuc"),
-"fail_screen": SubResource("Animation_nd1u1")
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_svhce"]
@@ -301,33 +333,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ib3b6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 14.6999, 21.1733)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2y86q"]
 _data = {
 "RESET": SubResource("Animation_ib3b6"),
@@ -336,6 +341,10 @@ _data = {
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_sg2n5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0fg2b")
@@ -510,6 +519,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_ftefi")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_agxvy")
 script = ExtResource("8_0fhs1")
 
 [node name="Gruel" type="Label" parent="Player/CanvasLayer/FailScreen"]
@@ -517,10 +528,9 @@ layout_mode = 2
 offset_left = -500.0
 offset_top = 223.0
 offset_right = -113.001
-offset_bottom = 303.0
+offset_bottom = 337.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_ovter")
 theme_override_font_sizes/font_size = 100
 text = "GRUEL"
 horizontal_alignment = 1
@@ -539,8 +549,7 @@ layout_mode = 2
 offset_left = 1300.0
 offset_top = 320.0
 offset_right = 1687.0
-offset_bottom = 400.0
-theme_override_fonts/font = ExtResource("9_ovter")
+offset_bottom = 434.0
 theme_override_font_sizes/font_size = 100
 text = "HAS"
 horizontal_alignment = 1
@@ -559,10 +568,9 @@ layout_mode = 2
 offset_left = 446.5
 offset_top = 1000.0
 offset_right = 833.5
-offset_bottom = 1080.0
+offset_bottom = 1114.0
 pivot_offset = Vector2(193.5, 40)
 theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_fonts/font = ExtResource("9_ovter")
 theme_override_font_sizes/font_size = 100
 text = "COOLED"
 horizontal_alignment = 1
@@ -583,7 +591,6 @@ grow_vertical = 0
 [node name="Retry Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_ovter")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_reccp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ibwtb")
@@ -599,7 +606,6 @@ theme_override_constants/margin_top = 17
 [node name="Menu Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_ovter")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_reccp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ibwtb")
@@ -618,11 +624,6 @@ libraries = {
 }
 speed_scale = 1.495
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.66301, 0)
-layers = 3
-omni_range = 20.896
-
 [node name="Guard" parent="." instance=ExtResource("6_3dir3")]
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
@@ -635,6 +636,7 @@ transform = Transform3D(1, 0, 0, 0, 0.645298, 0.763931, 0, -0.763931, 0.645298, 
 current = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
