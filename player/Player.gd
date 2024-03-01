@@ -24,15 +24,18 @@ func _physics_process(delta: float) -> void:
 	
 	var rotation_speed := 20.0
 	var weight := 1.0 - pow(0.5, delta * rotation_speed)
-
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		
-		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
-		
+	
+	if !Globals.game_started:
+		return
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+			
+			visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
+			
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 
-	move_and_slide()
+		move_and_slide()

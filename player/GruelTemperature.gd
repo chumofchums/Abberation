@@ -24,4 +24,4 @@ func _process(delta: float) -> void:
 			gruelCooled = true
 			print("Your Gruel has cooled")
 			gruelTimeout.emit()
-
+			Globals.game_started = false
