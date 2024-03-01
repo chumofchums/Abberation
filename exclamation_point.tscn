@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqq0ycg4wq2p"]
+
+[ext_resource type="PackedScene" uid="uid://bbv7l4ws1ovm8" path="res://exclamation_point_emmision.glb" id="1_3yk7i"]
+
+[node name="ExclamationPoint" type="Node3D"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="exclamation_point_emmision" parent="." instance=ExtResource("1_3yk7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41629, 0)

@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_area: Area3D = $visuals/VisionArea
 @onready var visuals: MeshInstance3D = $visuals
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 @export var patrol_direction: Node3D
 
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
+		
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
 	move_and_slide()
 
@@ -38,5 +40,12 @@ func _on_vision_timer_timeout() -> void:
 	var overlaps = vision_area.get_overlapping_bodies()
 	if overlaps.size() > 0:
 		for overlap in overlaps:
-			if overlap.name == "Player":
-				player_spotted = true
+			if player_spotted:
+				return
+			else:
+				if overlap.name == "Player":
+					_on_player_spotted()
+
+func _on_player_spotted():
+	player_spotted = true
+	anim.play("player_spotted")
