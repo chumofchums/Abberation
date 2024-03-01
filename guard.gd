@@ -20,18 +20,18 @@ func _ready() -> void:
 	speed = PATROL_SPEED
 
 func _physics_process(delta: float) -> void:
+	var weight := 1.0 - pow(0.5, delta * rotation_speed)
 	if !player_spotted:
 		velocity = patrol_direction.direction * speed
+		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-patrol_direction.direction.x, -patrol_direction.direction.z), weight)
+
 	else:
 		speed = CHASE_SPEED
 		nav.target_position = Globals.Player.global_transform.origin
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
-
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
-
-	var weight := 1.0 - pow(0.5, delta * rotation_speed)
-	visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
+		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
 	move_and_slide()
 
 func _on_vision_timer_timeout() -> void:
