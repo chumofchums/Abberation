@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=30 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://player/GruelTemperature.gd" id="7_vxugl"]
 [ext_resource type="Script" path="res://player/FailScreen.gd" id="8_0fhs1"]
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="8_ftefi"]
+[ext_resource type="Texture2D" uid="uid://sm03tgg720ta" path="res://textures/shield_canva.png" id="10_6ek61"]
+[ext_resource type="Texture2D" uid="uid://gtsfa0ch6jcr" path="res://textures/sword.png" id="10_yy85e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_757gv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,207 +51,197 @@ albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxvy"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reccp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibwtb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmacn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i56ql"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_po6ft"]
-
-[sub_resource type="Animation" id="Animation_mvbuc"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_lugql"]
+resource_name = "fail_anim"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FailScreen/Gruel:position")
+tracks/0/path = NodePath("FailScreen/Gruel:theme_override_font_sizes/font_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-500, 223)]
+"values": [700, 220]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FailScreen/Has:position")
+tracks/1/path = NodePath("FailScreen/Gruel:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1300, 320)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FailScreen/Cooled:scale")
+tracks/2/path = NodePath("FailScreen/Has:theme_override_font_sizes/font_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [400, 100]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FailScreen/Cooled:position")
+tracks/3/path = NodePath("FailScreen/Has:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(446.5, 1000)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FailScreen/Cooled:theme_override_colors/font_color")
+tracks/4/path = NodePath("FailScreen/Cooled:theme_override_font_sizes/font_size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [630, 230]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("FailScreen/VBoxContainer/Retry Button:visible")
+tracks/5/path = NodePath("FailScreen/Cooled:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(2, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("FailScreen/VBoxContainer/Menu Button:visible")
+tracks/6/path = NodePath("FailScreen/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_nd1u1"]
-resource_name = "fail_screen"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FailScreen/Gruel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(3.2, 3.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-500, 223), Vector2(446.5, 223)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FailScreen/Has:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1300, 320), Vector2(1300, 320), Vector2(446.5, 320)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FailScreen/Cooled:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(446.5, 1000), Vector2(446.5, 514.167), Vector2(446.5, 417)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FailScreen/Cooled:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2.5, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(10, 10), Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FailScreen/Cooled:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.5, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FailScreen/VBoxContainer/Menu Button:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.7, 4.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FailScreen/VBoxContainer/Retry Button:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.7, 4.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
+"values": [Vector2(104, 643), Vector2(548, -126)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GruelTempBar:visible")
+tracks/7/path = NodePath("FailScreen/Sword2:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(3.2, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(644, 911), Vector2(218, 174)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FailScreen/ColorRect:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3, 3.2, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.545098), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FailScreen/VBoxContainer/Retry Button:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.6, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FailScreen/VBoxContainer/Menu Button:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.8, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FailScreen/Shield:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hxsgw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FailScreen/VBoxContainer/Retry Button:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FailScreen/VBoxContainer/Menu Button:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FailScreen/Shield:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
 _data = {
-"RESET": SubResource("Animation_mvbuc"),
-"fail_screen": SubResource("Animation_nd1u1")
+"RESET": SubResource("Animation_hxsgw"),
+"fail_anim": SubResource("Animation_lugql")
 }
 
 [sub_resource type="Animation" id="Animation_ib3b6"]
@@ -523,15 +515,59 @@ theme = ExtResource("8_ftefi")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_agxvy")
 script = ExtResource("8_0fhs1")
 
-[node name="Gruel" type="Label" parent="Player/CanvasLayer/FailScreen"]
-layout_mode = 2
-offset_left = -500.0
-offset_top = 223.0
-offset_right = -113.001
-offset_bottom = 337.0
+[node name="Sword" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
+layout_mode = 0
+offset_left = 548.0
+offset_top = -126.0
+offset_right = 1136.0
+offset_bottom = 727.0
+rotation = 0.523599
+texture = ExtResource("10_yy85e")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="Sword2" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 174.0
+offset_right = 805.999
+offset_bottom = 1027.0
+rotation = -0.523599
+texture = ExtResource("10_yy85e")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="Shield" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -352.0
+offset_right = 304.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
+texture = ExtResource("10_6ek61")
+
+[node name="Gruel" type="Label" parent="Player/CanvasLayer/FailScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -220.0
+offset_right = 193.499
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 220
 text = "GRUEL"
 horizontal_alignment = 1
 
@@ -545,11 +581,18 @@ theme_override_constants/margin_top = 9
 theme_override_constants/margin_bottom = 0
 
 [node name="Has" type="Label" parent="Player/CanvasLayer/FailScreen"]
-layout_mode = 2
-offset_left = 1300.0
-offset_top = 320.0
-offset_right = 1687.0
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -98.48
+offset_right = 193.5
+offset_bottom = 15.5202
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "HAS"
 horizontal_alignment = 1
@@ -564,16 +607,22 @@ theme_override_constants/margin_top = 9
 theme_override_constants/margin_bottom = 0
 
 [node name="Cooled" type="Label" parent="Player/CanvasLayer/FailScreen"]
-layout_mode = 2
-offset_left = 446.5
-offset_top = 1000.0
-offset_right = 833.5
-offset_bottom = 1114.0
-pivot_offset = Vector2(193.5, 40)
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.5
+offset_top = -29.955
+offset_right = 416.5
+offset_bottom = 230.045
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 230
 text = "COOLED"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 1
@@ -587,42 +636,39 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="Retry Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxEmpty_reccp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ibwtb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wmacn")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_i56ql")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_po6ft")
-text = "RETRY"
+alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 17
+theme_override_constants/margin_top = 10
 
-[node name="Menu Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
-visible = false
+[node name="Retry Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxEmpty_reccp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ibwtb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wmacn")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_i56ql")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_po6ft")
+text = "RETRY"
+
+[node name="Menu Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "MENU"
 
 [node name="MarginContainer" type="MarginContainer" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Player/CanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="FailCutscene" type="AnimationPlayer" parent="Player/CanvasLayer"]
 libraries = {
 "": SubResource("AnimationLibrary_ivtb2")
 }
-speed_scale = 1.495
 
 [node name="Guard" parent="." instance=ExtResource("6_3dir3")]
 
