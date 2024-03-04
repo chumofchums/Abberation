@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=29 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -10,8 +10,8 @@
 [ext_resource type="Script" path="res://player/GruelTemperature.gd" id="7_vxugl"]
 [ext_resource type="Script" path="res://player/FailScreen.gd" id="8_0fhs1"]
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="8_ftefi"]
-[ext_resource type="Texture2D" uid="uid://sm03tgg720ta" path="res://textures/shield_canva.png" id="10_6ek61"]
 [ext_resource type="Texture2D" uid="uid://gtsfa0ch6jcr" path="res://textures/sword.png" id="10_yy85e"]
+[ext_resource type="Texture2D" uid="uid://owbgc06g6c5n" path="res://textures/wood_shield.png" id="11_fdpge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_757gv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -199,48 +199,8 @@ tracks/11/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_hxsgw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FailScreen/VBoxContainer/Retry Button:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FailScreen/VBoxContainer/Menu Button:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FailScreen/Shield:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
 _data = {
-"RESET": SubResource("Animation_hxsgw"),
 "fail_anim": SubResource("Animation_lugql")
 }
 
@@ -273,7 +233,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_svhce"]
 resource_name = "cutscene"
-length = 5.0
+length = 4.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -305,7 +265,7 @@ tracks/2/path = NodePath("ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.3, 4.3, 4.9),
+"times": PackedFloat32Array(3.3, 4.4, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -317,7 +277,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.3),
+"times": PackedFloat32Array(4.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -517,10 +477,10 @@ script = ExtResource("8_0fhs1")
 
 [node name="Sword" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 0
-offset_left = 548.0
-offset_top = -126.0
-offset_right = 1136.0
-offset_bottom = 727.0
+offset_left = 104.0
+offset_top = 643.0
+offset_right = 692.0
+offset_bottom = 1496.0
 rotation = 0.523599
 texture = ExtResource("10_yy85e")
 expand_mode = 1
@@ -529,10 +489,10 @@ flip_v = true
 
 [node name="Sword2" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 174.0
-offset_right = 805.999
-offset_bottom = 1027.0
+offset_left = 644.0
+offset_top = 911.0
+offset_right = 1232.0
+offset_bottom = 1764.0
 rotation = -0.523599
 texture = ExtResource("10_yy85e")
 expand_mode = 1
@@ -540,6 +500,7 @@ stretch_mode = 4
 flip_v = true
 
 [node name="Shield" type="TextureRect" parent="Player/CanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -552,9 +513,10 @@ offset_right = 304.0
 offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_6ek61")
+texture = ExtResource("11_fdpge")
 
 [node name="Gruel" type="Label" parent="Player/CanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -567,7 +529,7 @@ offset_right = 193.499
 offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 220
+theme_override_font_sizes/font_size = 700
 text = "GRUEL"
 horizontal_alignment = 1
 
@@ -581,6 +543,7 @@ theme_override_constants/margin_top = 9
 theme_override_constants/margin_bottom = 0
 
 [node name="Has" type="Label" parent="Player/CanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -593,7 +556,7 @@ offset_right = 193.5
 offset_bottom = 15.5202
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 400
 text = "HAS"
 horizontal_alignment = 1
 
@@ -607,6 +570,7 @@ theme_override_constants/margin_top = 9
 theme_override_constants/margin_bottom = 0
 
 [node name="Cooled" type="Label" parent="Player/CanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -619,7 +583,7 @@ offset_right = 416.5
 offset_bottom = 230.045
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 230
+theme_override_font_sizes/font_size = 630
 text = "COOLED"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -643,11 +607,13 @@ layout_mode = 2
 theme_override_constants/margin_top = 10
 
 [node name="Retry Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "RETRY"
 
 [node name="Menu Button" type="Button" parent="Player/CanvasLayer/FailScreen/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "MENU"
@@ -664,8 +630,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="FailCutscene" type="AnimationPlayer" parent="Player/CanvasLayer"]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ivtb2")
 }
@@ -682,7 +650,6 @@ transform = Transform3D(1, 0, 0, 0, 0.645298, 0.763931, 0, -0.763931, 0.645298, 
 current = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

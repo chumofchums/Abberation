@@ -2,7 +2,7 @@ extends ProgressBar
 
 signal gruelTimeout
 
-var duration: float = 5.0
+var duration: float = 1.0
 var elapsed_time: float = 0.0
 var gruelCooled: bool = false
 
