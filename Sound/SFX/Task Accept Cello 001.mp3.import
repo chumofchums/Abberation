@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://44va7eh0sfe"
+path="res://.godot/imported/Task Accept Cello 001.mp3-f6e8f1f863f25c1220d964c05a6d44e2.mp3str"
+
+[deps]
+
+source_file="res://Sound/SFX/Task Accept Cello 001.mp3"
+dest_files=["res://.godot/imported/Task Accept Cello 001.mp3-f6e8f1f863f25c1220d964c05a6d44e2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

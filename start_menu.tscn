@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpv50h8qtcfvv"]
+[gd_scene load_steps=14 format=3 uid="uid://cpv50h8qtcfvv"]
 
 [ext_resource type="Script" path="res://StartMenu.gd" id="1_tm825"]
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="2_xlcts"]
 [ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="3_rxbai"]
+[ext_resource type="AudioStream" uid="uid://bbh3ppsdxynh1" path="res://Sound/Music/Menu.wav" id="4_3a7bm"]
+[ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="4_vw3h3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6wal"]
 
@@ -13,6 +15,79 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5b6c"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klw15"]
+
+[sub_resource type="Animation" id="Animation_lvk5k"]
+resource_name = "start_game"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/MarginContainer/VBoxContainer/Start Button/AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [11.0, -30.059]
+}
+
+[sub_resource type="Animation" id="Animation_ynl24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4g4d"]
+_data = {
+"RESET": SubResource("Animation_ynl24"),
+"start_game": SubResource("Animation_lvk5k")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_tm825")
@@ -74,6 +149,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
 text = "Start"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu/MarginContainer/VBoxContainer/Start Button"]
+stream = ExtResource("4_vw3h3")
+volume_db = 0.81
+
 [node name="MarginContainer2" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
@@ -103,6 +182,30 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kbpb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3a7bm")
+volume_db = -80.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3a7bm")
+volume_db = 11.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q4g4d")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

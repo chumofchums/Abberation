@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3j377x76akj8"
+path="res://.godot/imported/Wood Hard 8.wav-3daa6d4013f6044de2685d3a76fad0bb.sample"
+
+[deps]
+
+source_file="res://Sound/SFX/Wood Hard 8.wav"
+dest_files=["res://.godot/imported/Wood Hard 8.wav-3daa6d4013f6044de2685d3a76fad0bb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

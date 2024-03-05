@@ -4,7 +4,7 @@
 
 [resource]
 default_font = ExtResource("1_g4fdc")
-Button/colors/font_color = Color(0.376471, 0.423529, 0.364706, 1)
+Button/colors/font_color = Color(0.945098, 0.764706, 0.462745, 1)
 Button/colors/font_hover_color = Color(1, 0.956863, 0.956863, 1)
 Button/colors/font_hover_pressed_color = Color(0.945098, 0.764706, 0.462745, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)

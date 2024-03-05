@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=33 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -12,6 +12,10 @@
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="8_ftefi"]
 [ext_resource type="Texture2D" uid="uid://gtsfa0ch6jcr" path="res://textures/sword.png" id="10_yy85e"]
 [ext_resource type="Texture2D" uid="uid://owbgc06g6c5n" path="res://textures/wood_shield.png" id="11_fdpge"]
+[ext_resource type="AudioStream" uid="uid://bif4iq6vhwys1" path="res://Sound/SFX/Wood Hard 1.wav" id="12_6bh0x"]
+[ext_resource type="AudioStream" uid="uid://bdwks3jc0ecm1" path="res://Sound/SFX/Sword Woosh 16.wav" id="12_tmkcd"]
+[ext_resource type="AudioStream" uid="uid://d0yxmbprvmcji" path="res://Sound/SFX/Wood Hard 5.wav" id="13_6ko66"]
+[ext_resource type="AudioStream" uid="uid://3j377x76akj8" path="res://Sound/SFX/Wood Hard 8.wav" id="14_yekpa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_757gv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -197,6 +201,54 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AudioStreamPlayer:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("FailScreen/Gruel/AudioStreamPlayer:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("FailScreen/Has/AudioStreamPlayer:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FailScreen/Cooled/AudioStreamPlayer:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
@@ -533,6 +585,10 @@ theme_override_font_sizes/font_size = 700
 text = "GRUEL"
 horizontal_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer/FailScreen/Gruel"]
+stream = ExtResource("14_yekpa")
+volume_db = -0.563
+
 [node name="MarginContainer" type="MarginContainer" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 2
 offset_left = 446.5
@@ -559,6 +615,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 400
 text = "HAS"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer/FailScreen/Has"]
+stream = ExtResource("12_6bh0x")
+volume_db = -4.472
 
 [node name="MarginContainer2" type="MarginContainer" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 2
@@ -587,6 +647,10 @@ theme_override_font_sizes/font_size = 630
 text = "COOLED"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer/FailScreen/Cooled"]
+stream = ExtResource("13_6ko66")
+volume_db = -3.055
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer/FailScreen"]
 layout_mode = 1
@@ -637,6 +701,9 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ivtb2")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer"]
+stream = ExtResource("12_tmkcd")
 
 [node name="Guard" parent="." instance=ExtResource("6_3dir3")]
 
