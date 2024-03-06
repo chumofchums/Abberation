@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var visuals: Node3D = $visuals
 @onready var camera_boom: Node3D = $camera_boom
+@onready var player_animator: AnimationPlayer = $"visuals/Delivery Boy/PlayerAnimator"
+
 
 const WALK_SPEED= 5.0
 const SPRINT_SPEED = 8.0
@@ -33,9 +35,9 @@ func _physics_process(delta: float) -> void:
 			velocity.z = direction.z * speed
 			
 			visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
-			
+			player_animator.play("running")
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			velocity.z = move_toward(velocity.z, 0, speed)
-
+			player_animator.play("idle")
 		move_and_slide()
