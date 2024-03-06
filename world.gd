@@ -18,9 +18,3 @@ func start_game():
 	gruel_temp_bar.visible = true
 	color_rect.visible = false
 	cutscene_complete = true
-
-func _on_retry_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://world.tscn")
-
-func _on_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://start_menu.tscn")

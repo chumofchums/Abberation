@@ -1,14 +1,17 @@
 extends CharacterBody3D
 
+signal health_changed
+
 @onready var visuals: Node3D = $visuals
 @onready var camera_boom: Node3D = $camera_boom
 @onready var player_animator: AnimationPlayer = $"visuals/Delivery Boy/PlayerAnimator"
-
 
 const WALK_SPEED= 5.0
 const SPRINT_SPEED = 8.0
 
 var speed
+var max_health: int = 3
+var current_health: int = max_health
 
 func _ready() -> void:
 	Globals.Player = self
@@ -41,3 +44,11 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, speed)
 			player_animator.play("idle")
 		move_and_slide()
+
+func _on_hit_area_area_entered(area: Area3D) -> void:
+	if area.name == "HitBox":
+		current_health -= 1
+		if current_health <= 0:
+			print("Death")
+		
+		health_changed.emit(current_health)

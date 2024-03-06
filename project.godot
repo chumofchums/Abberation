@@ -31,7 +31,7 @@ project/assembly_name="Abberation"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
@@ -94,3 +94,4 @@ interact={
 3d_render/layer_2="obstacles"
 3d_physics/layer_2="player"
 3d_physics/layer_3="interactable"
+3d_physics/layer_4="enemy"
