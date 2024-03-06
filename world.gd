@@ -1,10 +1,11 @@
 extends Node3D
 
-@onready var cutscene_camera: Camera3D = $CutsceneCamera
-@onready var cutscene_player: AnimationPlayer = $CutscenePlayer
+@onready var cutscene_camera: Camera3D = $IntroCutscene/CutsceneCamera
+@onready var cutscene_player: AnimationPlayer = $IntroCutscene/CutscenePlayer
 @onready var gruel_temp_bar: ProgressBar = $Player/PlayerUI/GruelTempBar
 @onready var world: Node3D = $"."
-@onready var color_rect: ColorRect = $ColorRect
+@onready var color_rect: ColorRect = $IntroCutscene/IntroCutsceneColorRect
+
 
 var cutscene_complete: bool = false
 
