@@ -266,3 +266,4 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ljdom")
 }
+blend_times = [&"idle", &"idle", 0.2, &"idle", &"running", 0.2]

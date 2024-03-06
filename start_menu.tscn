@@ -141,6 +141,7 @@ theme_override_constants/margin_bottom = 50
 [node name="Start Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../Settings Button")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
@@ -160,6 +161,8 @@ theme_override_constants/margin_top = 10
 [node name="Settings Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Start Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
@@ -175,6 +178,7 @@ theme_override_constants/margin_top = 10
 [node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Settings Button")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")

@@ -3,7 +3,10 @@ extends CanvasLayer
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
 @onready var menu_music: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var start_button: Button = $"Menu/MarginContainer/VBoxContainer/Start Button"
 
+func _ready() -> void:
+	start_button.grab_focus()
 
 func _on_start_button_pressed() -> void:
 	menu_music.stop()
