@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=20 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_fxljq"]
 [ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://guard.tscn" id="6_3dir3"]
 [ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_qvxo6"]
+[ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_5qrc6"]
 [ext_resource type="AudioStream" uid="uid://dqurfao108qau" path="res://Sound/SFX/tada_horns.wav" id="17_o8vye"]
 [ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="19_gic0p"]
 
@@ -80,7 +81,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.4, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 14.6999, 21.1733), Vector3(-12.0866, 14.6999, -6.47489), Vector3(-12.0866, 4.31133, -11.687)]
+"values": [Vector3(0, 14.6999, 21.1733), Vector3(-12.0866, 14.6999, -6.47489), Vector3(-12.2136, 3.80627, -11.6503)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -270,7 +271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63742, 0, 9.72467)
 [node name="Marker3D4" type="Marker3D" parent="level" groups=["Guard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6596, 0, 9.72467)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="level"]
+[node name="World_Ground" type="MeshInstance3D" parent="level"]
 transform = Transform3D(263.828, 0, 0, 0, 263.828, 0, 0, 0, 263.828, 0, -0.2, 0)
 mesh = SubResource("PlaneMesh_8hjyh")
 surface_material_override/0 = SubResource("StandardMaterial3D_mni71")
@@ -292,7 +293,7 @@ libraries = {
 }
 
 [node name="CutsceneCamera" type="Camera3D" parent="IntroCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6999, 21.1733)
+transform = Transform3D(1, 0, 0, 0, 0.645298, 0.763931, 0, -0.763931, 0.645298, 0, 14.6999, 21.1733)
 current = true
 fov = 74.3209
 
@@ -307,3 +308,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CutsceneAudio" type="AudioStreamPlayer" parent="IntroCutscene"]
 stream = ExtResource("17_o8vye")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5qrc6")
+volume_db = -16.0
+
+[node name="SpawnLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7117, 1.90735e-06, -14.7098)
+
+[connection signal="chase_player" from="Guard" to="." method="_on_guard_chase_player"]

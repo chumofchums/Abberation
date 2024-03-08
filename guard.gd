@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
+signal chase_player
+
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_area: Area3D = $visuals/VisionArea
 @onready var visuals: MeshInstance3D = $visuals
 @onready var anim: AnimationPlayer = $AnimationPlayer
-
 @export var patrol_direction: Node3D
 
 const PATROL_SPEED = 2
@@ -14,8 +15,7 @@ var speed = 2
 var acceleration = 10
 var direction: Vector3 = Vector3.ZERO
 var player_spotted: bool = false
-
-var rotation_speed := 20.0
+var rotation_speed: float = 20.0
 
 func _ready() -> void:
 	speed = PATROL_SPEED
@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	if !player_spotted:
 		velocity = patrol_direction.direction * speed
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-patrol_direction.direction.x, -patrol_direction.direction.z), weight)
-
 	else:
 		speed = CHASE_SPEED
 		nav.target_position = Globals.Player.global_transform.origin
@@ -48,4 +47,5 @@ func _on_vision_timer_timeout() -> void:
 
 func _on_player_spotted():
 	player_spotted = true
+	chase_player.emit()
 	anim.play("player_spotted")

@@ -22,6 +22,5 @@ func _process(delta: float) -> void:
 	else:
 		if bar.value == 0:
 			gruelCooled = true
-			print("Your Gruel has cooled")
 			gruelTimeout.emit()
 			Globals.game_started = false

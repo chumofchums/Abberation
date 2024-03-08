@@ -12,6 +12,7 @@ func _ready() -> void:
 	get_positions()
 	get_next_position()
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if global_position.distance_to(current_position.position) < 1:
 		get_next_position()

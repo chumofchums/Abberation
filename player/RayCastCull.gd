@@ -11,6 +11,7 @@ var overhead: bool = false
 func _ready() -> void:
 	raycast = self
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if world.cutscene_complete:
 		if raycast.is_colliding():

@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 func _on_hit_area_area_entered(area: Area3D) -> void:
 	if area.name == "HitBox":
 		current_health -= 1
+		health_changed.emit(current_health)
+
 		if current_health <= 0:
 			print("Death")
-		
-		health_changed.emit(current_health)

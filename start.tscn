@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://mj7nmbw2ws4g"]
+
+[ext_resource type="Script" path="res://CandleLight.gd" id="1_e4cva"]
+[ext_resource type="PackedScene" uid="uid://cpv50h8qtcfvv" path="res://start_menu.tscn" id="2_trbac"]
+
+[sub_resource type="Gradient" id="Gradient_n4gmr"]
+offsets = PackedFloat32Array(0, 0.703264)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q815y"]
+gradient = SubResource("Gradient_n4gmr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Start" type="Node2D"]
+
+[node name="CandleLight" type="PointLight2D" parent="."]
+z_index = 2
+position = Vector2(630, 779)
+color = Color(0.909804, 0.4, 0, 1)
+energy = 2.35
+texture = SubResource("GradientTexture2D_q815y")
+texture_scale = 20.0
+script = ExtResource("1_e4cva")
+
+[node name="StartMenu" parent="." instance=ExtResource("2_trbac")]
+layer = 0

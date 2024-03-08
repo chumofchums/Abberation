@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpv50h8qtcfvv"]
+[gd_scene load_steps=15 format=3 uid="uid://cpv50h8qtcfvv"]
 
 [ext_resource type="Script" path="res://StartMenu.gd" id="1_tm825"]
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="2_xlcts"]
 [ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="3_rxbai"]
-[ext_resource type="AudioStream" uid="uid://bbh3ppsdxynh1" path="res://Sound/Music/Menu.wav" id="4_3a7bm"]
 [ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="4_vw3h3"]
+[ext_resource type="AudioStream" uid="uid://dt7entkrlp51b" path="res://Sound/SFX/tavern_ambience.mp3" id="5_husg5"]
+[ext_resource type="AudioStream" uid="uid://bncbvea8wjxbf" path="res://Sound/Music/MainMenuLoop.wav" id="5_k6arv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6wal"]
 
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG Tavern Ambience2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-50.121]
 }
 
 [sub_resource type="Animation" id="Animation_lvk5k"]
@@ -80,7 +93,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [11.0, -30.059]
+"values": [0.0, -50.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG Tavern Ambience2:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-19.0, -50.121]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4g4d"]
@@ -104,13 +129,19 @@ grow_vertical = 2
 theme = ExtResource("2_xlcts")
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
+self_modulate = Color(0.360784, 0.360784, 0.360784, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -69.0
+offset_right = 51.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_rxbai")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 1
@@ -188,13 +219,22 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
 text = "Quit"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_3a7bm")
+stream = ExtResource("5_k6arv")
 volume_db = -80.0
 autoplay = true
 
 [node name="Music2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_3a7bm")
-volume_db = 11.0
+stream = ExtResource("5_k6arv")
+autoplay = true
+
+[node name="BG Tavern Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_husg5")
+volume_db = -19.0
+autoplay = true
+
+[node name="BG Tavern Ambience2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_husg5")
+volume_db = -50.121
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

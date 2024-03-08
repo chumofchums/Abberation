@@ -328,6 +328,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="Character" parent="visuals/Delivery Boy" index="0"]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 1, 0)
 
+[node name="PlayerAnimator" parent="visuals/Delivery Boy" index="1"]
+blend_times = [&"idle", &"idle", 0.2, &"idle", &"running", 0.2]
+
 [node name="camera_boom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.552738, 0.833355, 0, -0.833355, 0.552738, 0, 9.86911, 5.76155)
 
@@ -357,6 +360,7 @@ fill_mode = 3
 script = ExtResource("6_yraga")
 
 [node name="HeartContainer" parent="PlayerUI" instance=ExtResource("7_ncvgp")]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

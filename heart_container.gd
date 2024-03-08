@@ -2,10 +2,6 @@ extends HBoxContainer
 
 @onready var HeartGuiClass = preload("res://heart_gui.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 func set_max_hearts(max: int):
 	for i in range(max):
 		var heart = HeartGuiClass.instantiate()

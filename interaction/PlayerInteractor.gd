@@ -7,6 +7,7 @@ var cached_closest: Interactable
 func _ready() -> void:
 	controller = player
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	var new_closest: Interactable = get_closest_interactable()
 	if new_closest != cached_closest:
