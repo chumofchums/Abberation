@@ -11,6 +11,10 @@ extends Node3D
 var cutscene_complete: bool = false
 
 func _ready() -> void:
+	var timer = get_node("Timer")
+	timer.timeout.connect(start_cutscene)
+
+func start_cutscene() -> void:
 	cutscene_player.play("cutscene")
 
 func start_game():

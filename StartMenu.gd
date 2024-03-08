@@ -13,7 +13,12 @@ func _on_start_button_pressed() -> void:
 	bg_ambience.stop()
 	anim.play("start_game")
 	await anim.animation_finished
-	get_tree().change_scene_to_file("res://world.tscn")
+	#get_tree().change_scene_to_file("res://world.tscn")
+	load_game()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func load_game():
+	LoadManager.load_scene("res://world.tscn")
+	#LoadManager.load_scene(Globals.world1)
