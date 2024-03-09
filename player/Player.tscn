@@ -323,13 +323,10 @@ transform = Transform3D(1.00001, 9.65478e-08, -1.50521e-10, -5.89856e-09, 1.0000
 shape = SubResource("BoxShape3D_x56wk")
 
 [node name="Delivery Boy" parent="visuals" instance=ExtResource("3_askod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1.21408e-05, 0.00523594, 0.999987, 0.00174528, 0.999985, -0.00523596, -0.999999, 0.00174532, 3.00246e-06, 0, 0, 0)
 
-[node name="Character" parent="visuals/Delivery Boy" index="0"]
-transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 1, 0)
-
-[node name="PlayerAnimator" parent="visuals/Delivery Boy" index="1"]
-blend_times = [&"idle", &"idle", 0.2, &"idle", &"running", 0.2]
+[node name="Timer" type="Timer" parent="visuals/Delivery Boy"]
+wait_time = 0.5
 
 [node name="camera_boom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.552738, 0.833355, 0, -0.833355, 0.552738, 0, 9.86911, 5.76155)
@@ -578,4 +575,3 @@ shape = SubResource("CapsuleShape3D_22p1v")
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_area_area_entered"]
 
 [editable path="visuals/PlayerInteractor"]
-[editable path="visuals/Delivery Boy"]

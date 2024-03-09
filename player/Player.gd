@@ -1,10 +1,13 @@
 extends CharacterBody3D
 
 signal health_changed
+signal player_caught
 
 @onready var visuals: Node3D = $visuals
 @onready var camera_boom: Node3D = $camera_boom
 @onready var player_animator: AnimationPlayer = $"visuals/Delivery Boy/PlayerAnimator"
+@onready var spawn_location: Node3D = $"../PlayerSpawn"
+@onready var timer: Timer = $"visuals/Delivery Boy/Timer"
 
 const WALK_SPEED= 5.0
 const SPRINT_SPEED = 8.0
@@ -49,6 +52,11 @@ func _on_hit_area_area_entered(area: Area3D) -> void:
 	if area.name == "HitBox":
 		current_health -= 1
 		health_changed.emit(current_health)
-
+		player_caught.emit()
+		player_animator.play("caught")
+		await get_tree().create_timer(.5).timeout
+		self.global_transform.origin = spawn_location.global_transform.origin
+	
 		if current_health <= 0:
 			print("Death")
+

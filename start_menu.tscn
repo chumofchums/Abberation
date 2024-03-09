@@ -118,6 +118,7 @@ _data = {
 script = ExtResource("1_tm825")
 
 [node name="Background" type="Node3D" parent="."]
+visible = false
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
@@ -129,6 +130,7 @@ grow_vertical = 2
 theme = ExtResource("2_xlcts")
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
+visible = false
 self_modulate = Color(0.360784, 0.360784, 0.360784, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -172,7 +174,7 @@ theme_override_constants/margin_bottom = 50
 [node name="Start Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_bottom = NodePath("../Settings Button")
+focus_neighbor_bottom = NodePath("../How to Button")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
@@ -189,7 +191,7 @@ volume_db = -4.339
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Settings Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="How to Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../Start Button")
@@ -200,7 +202,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kbpb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5b6c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
-text = "Settings"
+text = "How to Play"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -209,7 +211,7 @@ theme_override_constants/margin_top = 10
 [node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../Settings Button")
+focus_neighbor_top = NodePath("../How to Button")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a6wal")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fy78q")

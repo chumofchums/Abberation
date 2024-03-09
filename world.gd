@@ -7,12 +7,17 @@ extends Node3D
 @onready var world: Node3D = $"."
 @onready var color_rect: ColorRect = $IntroCutscene/IntroCutsceneColorRect
 @onready var game_music: AudioStreamPlayer = $GameMusic
+@onready var transition_player: AnimationPlayer = $Transition/AnimationPlayer
+@onready var guard_spawn: Node3D = $GuardSpawn
+
+var guard = preload("res://guard.tscn")
 
 var cutscene_complete: bool = false
 
 func _ready() -> void:
 	var timer = get_node("Timer")
 	timer.timeout.connect(start_cutscene)
+
 
 func start_cutscene() -> void:
 	cutscene_player.play("cutscene")
@@ -31,3 +36,16 @@ func increase_music_speed():
 
 func _on_guard_chase_player() -> void:
 	increase_music_speed()
+
+func _on_player_player_caught() -> void:
+	reset_player()
+	
+
+func reset_player():
+	game_music.pitch_scale = 1
+	transition_player.play("fade_out")
+	await transition_player.animation_finished
+	var guard_instance = guard.instantiate()
+	guard_instance.position = guard_spawn.global_transform.origin
+	add_child(guard_instance)
+	transition_player.play("fade_in")

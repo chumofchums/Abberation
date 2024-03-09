@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://mj7nmbw2ws4g"]
 
 [ext_resource type="Script" path="res://CandleLight.gd" id="1_e4cva"]
-[ext_resource type="PackedScene" uid="uid://cpv50h8qtcfvv" path="res://start_menu.tscn" id="2_trbac"]
+[ext_resource type="PackedScene" uid="uid://dmy3p2bbgtd5m" path="res://scroll.tscn" id="2_rdn87"]
 
 [sub_resource type="Gradient" id="Gradient_n4gmr"]
 offsets = PackedFloat32Array(0, 0.703264)
@@ -18,10 +18,10 @@ fill_from = Vector2(0.5, 0.5)
 z_index = 2
 position = Vector2(630, 779)
 color = Color(0.909804, 0.4, 0, 1)
-energy = 2.35
+energy = 2.67
 texture = SubResource("GradientTexture2D_q815y")
 texture_scale = 20.0
 script = ExtResource("1_e4cva")
 
-[node name="StartMenu" parent="." instance=ExtResource("2_trbac")]
+[node name="Scroll" parent="." instance=ExtResource("2_rdn87")]
 layer = 0

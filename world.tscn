@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=21 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
 [ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://guard.tscn" id="6_3dir3"]
 [ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_qvxo6"]
 [ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_5qrc6"]
+[ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_12g1q"]
 [ext_resource type="AudioStream" uid="uid://dqurfao108qau" path="res://Sound/SFX/tada_horns.wav" id="17_o8vye"]
 [ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="19_gic0p"]
 
@@ -298,6 +299,7 @@ current = true
 fov = 74.3209
 
 [node name="IntroCutsceneColorRect" type="ColorRect" parent="IntroCutscene"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -313,12 +315,19 @@ stream = ExtResource("17_o8vye")
 stream = ExtResource("10_5qrc6")
 volume_db = -16.0
 
-[node name="SpawnLocation" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7117, 1.90735e-06, -14.7098)
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.381, 1.90735e-06, -14.7098)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="Transition" parent="." instance=ExtResource("11_12g1q")]
+
+[node name="GuardSpawn" type="Node3D" parent="."]
+
+[connection signal="player_caught" from="Player" to="." method="_on_player_player_caught"]
 [connection signal="chase_player" from="Guard" to="." method="_on_guard_chase_player"]
+
+[editable path="Transition"]

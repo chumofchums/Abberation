@@ -1,0 +1,722 @@
+[gd_scene load_steps=25 format=3 uid="uid://dmy3p2bbgtd5m"]
+
+[ext_resource type="Script" path="res://StartMenu.gd" id="1_wogsy"]
+[ext_resource type="Texture2D" uid="uid://go62menjajjf" path="res://start_menu/wood_cartoon_carved_instructions.jpg" id="2_oo3k0"]
+[ext_resource type="Texture2D" uid="uid://b72ujck2knwx2" path="res://start_menu/Middle_Scroll.png" id="2_rm8yt"]
+[ext_resource type="Texture2D" uid="uid://dgse0vcpspsx7" path="res://start_menu/Left_Scroll.png" id="3_4smsd"]
+[ext_resource type="FontFile" uid="uid://dlnbj6iiqfyai" path="res://fonts/MedievalSharp-Regular.ttf" id="3_r7arp"]
+[ext_resource type="AudioStream" uid="uid://cjoo2dvww8v0h" path="res://Sound/SFX/scroll_paper.wav" id="4_4boba"]
+[ext_resource type="Texture2D" uid="uid://dtkwtkmyci88a" path="res://start_menu/Right_Scroll.png" id="4_iaki1"]
+[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="5_v1p6l"]
+[ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="6_b01bk"]
+[ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="7_14xb8"]
+[ext_resource type="AudioStream" uid="uid://bncbvea8wjxbf" path="res://Sound/Music/MainMenuLoop.wav" id="9_7516q"]
+[ext_resource type="AudioStream" uid="uid://dt7entkrlp51b" path="res://Sound/SFX/tavern_ambience.mp3" id="10_lcmu4"]
+
+[sub_resource type="Animation" id="Animation_0vre7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiddleScroll/TextureProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/MarginContainer/VBoxContainer/Game Title:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/MarginContainer/VBoxContainer/Start Button:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/MarginContainer/VBoxContainer/How to Button:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu/MarginContainer/VBoxContainer/Quit Button:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel2/TextureRect2:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(118, 698)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel2/TextureRect:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 23)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect/Back Button:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Menu:mouse_filter")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MiddleScroll:mouse_filter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_hi1gw"]
+resource_name = "close_scroll"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiddleScroll/TextureProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1100, 20), Vector2(113.445, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/MarginContainer/VBoxContainer/Game Title:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/MarginContainer/VBoxContainer/Start Button:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/MarginContainer/VBoxContainer/How to Button:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu/MarginContainer/VBoxContainer/Quit Button:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel2/TextureRect2:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(118, 693), Vector2(118, 698)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MiddleScroll/AudioStreamPlayer:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Panel2/TextureRect:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50, 23), Vector2(50, 25.855)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect/Back Button:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Menu:mouse_filter")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MiddleScroll:mouse_filter")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_kxelo"]
+resource_name = "open_scroll"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiddleScroll/TextureProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(113, 20), Vector2(1100, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/MarginContainer/VBoxContainer/Game Title:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/MarginContainer/VBoxContainer/Start Button:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/MarginContainer/VBoxContainer/How to Button:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu/MarginContainer/VBoxContainer/Quit Button:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect/Back Button:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lewt4"]
+_data = {
+"RESET": SubResource("Animation_0vre7"),
+"close_scroll": SubResource("Animation_hi1gw"),
+"open_scroll": SubResource("Animation_kxelo")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygvdm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5xl6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mhg2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5esml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sfbl"]
+
+[sub_resource type="Animation" id="Animation_ynl24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG Tavern Ambience2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-50.121]
+}
+
+[sub_resource type="Animation" id="Animation_lvk5k"]
+resource_name = "start_game"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/MarginContainer/VBoxContainer/Start Button/TrumpetSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -50.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG Tavern Ambience2:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-19.0, -50.121]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4g4d"]
+_data = {
+"RESET": SubResource("Animation_ynl24"),
+"start_game": SubResource("Animation_lvk5k")
+}
+
+[node name="Scroll" type="CanvasLayer"]
+script = ExtResource("1_wogsy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.560784, 0.560784, 0.560784, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oo3k0")
+expand_mode = 1
+
+[node name="Back Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1174.0
+offset_top = 649.0
+offset_right = 1239.0
+offset_bottom = 709.0
+theme_override_fonts/font = ExtResource("3_r7arp")
+theme_override_font_sizes/font_size = 45
+text = "<-"
+
+[node name="MiddleScroll" type="Panel" parent="."]
+self_modulate = Color(0.392157, 0.392157, 0.392157, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MiddleScroll"]
+self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 152.0
+offset_top = 92.0
+offset_right = 1104.0
+offset_bottom = 635.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_rm8yt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MiddleScroll"]
+stream = ExtResource("4_4boba")
+
+[node name="Panel2" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel2"]
+self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 25.855
+offset_right = 153.0
+offset_bottom = 699.855
+texture = ExtResource("3_4smsd")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Panel2"]
+self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 113.445
+offset_top = 16.0
+offset_right = 231.445
+offset_bottom = 714.0
+scale = Vector2(0.97, 0.97)
+pivot_offset = Vector2(0, 360)
+texture = ExtResource("4_iaki1")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_lewt4")
+}
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_v1p6l")
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+visible = false
+self_modulate = Color(0.360784, 0.360784, 0.360784, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -69.0
+offset_right = 51.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_b01bk")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 144
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 144
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Game Title" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_v1p6l")
+theme_override_font_sizes/font_size = 200
+text = "GRUELHUB"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Start Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../How to Button")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ygvdm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i5xl6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mhg2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5esml")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0sfbl")
+text = "Start"
+alignment = 0
+
+[node name="TrumpetSFX" type="AudioStreamPlayer" parent="Menu/MarginContainer/VBoxContainer/Start Button"]
+stream = ExtResource("7_14xb8")
+volume_db = -4.339
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="How to Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Start Button")
+focus_neighbor_bottom = NodePath("../Quit Button")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ygvdm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i5xl6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mhg2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5esml")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0sfbl")
+text = "How to Play"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../How to Button")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ygvdm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i5xl6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mhg2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5esml")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0sfbl")
+text = "Quit"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7516q")
+volume_db = -80.0
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7516q")
+autoplay = true
+
+[node name="BG Tavern Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_lcmu4")
+volume_db = -19.0
+autoplay = true
+
+[node name="BG Tavern Ambience2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_lcmu4")
+volume_db = -50.121
+autoplay = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q4g4d")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="TextureRect/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/How to Button" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
