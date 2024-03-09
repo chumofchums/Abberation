@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_511gj"]
 [ext_resource type="PackedScene" uid="uid://b7cfcasb7bri1" path="res://interaction/player_interactor.tscn" id="2_ctc5d"]
-[ext_resource type="PackedScene" uid="uid://8r5wwsrjiw33" path="res://delivery_boy.tscn" id="3_askod"]
+[ext_resource type="PackedScene" uid="uid://8r5wwsrjiw33" path="res://player/delivery_boy.tscn" id="3_agncm"]
 [ext_resource type="Script" path="res://player/RayCastCull.gd" id="4_au5dc"]
 [ext_resource type="Script" path="res://player/PlayerUI.gd" id="5_xedqx"]
 [ext_resource type="Script" path="res://player/GruelTemperature.gd" id="6_yraga"]
-[ext_resource type="PackedScene" uid="uid://cy4o5ioedylql" path="res://heart_container.tscn" id="7_ncvgp"]
+[ext_resource type="PackedScene" uid="uid://cy4o5ioedylql" path="res://player/heart_container.tscn" id="7_ncvgp"]
 [ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="7_udqyd"]
 [ext_resource type="Script" path="res://player/FailScreen.gd" id="8_jo5ch"]
 [ext_resource type="Script" path="res://player/FailCanvasLayer.gd" id="8_wpubo"]
@@ -322,7 +322,7 @@ transform = Transform3D(1, 1.55707e-10, 0, -7.71481e-11, 1, 0, -9.09495e-13, 0, 
 transform = Transform3D(1.00001, 9.65478e-08, -1.50521e-10, -5.89856e-09, 1.00002, -2.07219e-08, -4.17913e-10, 5.12227e-09, 1.00005, 0.00378704, 1.08394, -0.885198)
 shape = SubResource("BoxShape3D_x56wk")
 
-[node name="Delivery Boy" parent="visuals" instance=ExtResource("3_askod")]
+[node name="Delivery Boy" parent="visuals" instance=ExtResource("3_agncm")]
 transform = Transform3D(1.21408e-05, 0.00523594, 0.999987, 0.00174528, 0.999985, -0.00523596, -0.999999, 0.00174532, 3.00246e-06, 0, 0, 0)
 
 [node name="Timer" type="Timer" parent="visuals/Delivery Boy"]

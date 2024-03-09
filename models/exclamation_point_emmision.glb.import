@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bbv7l4ws1ovm8"
-path="res://.godot/imported/exclamation_point_emmision.glb-7a9c0368fa227d73f943cfd500bba543.scn"
+path="res://.godot/imported/exclamation_point_emmision.glb-f8f47a4e714dd716d7719aba27713087.scn"
 
 [deps]
 
-source_file="res://exclamation_point_emmision.glb"
-dest_files=["res://.godot/imported/exclamation_point_emmision.glb-7a9c0368fa227d73f943cfd500bba543.scn"]
+source_file="res://models/exclamation_point_emmision.glb"
+dest_files=["res://.godot/imported/exclamation_point_emmision.glb-f8f47a4e714dd716d7719aba27713087.scn"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6gg27kdkxf8n"]
 
-[ext_resource type="Script" path="res://heart_gui.gd" id="1_rdv84"]
+[ext_resource type="Script" path="res://player/heart_gui.gd" id="1_rdv84"]
 [ext_resource type="Texture2D" uid="uid://bv1r7lmogaqjk" path="res://textures/pieces4.png" id="1_ujo12"]
 [ext_resource type="Texture2D" uid="uid://cuvryw8wa6j7s" path="res://textures/Heart_container.png" id="2_2wrmy"]
 

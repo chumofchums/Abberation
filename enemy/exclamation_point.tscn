@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqq0ycg4wq2p"]
 
-[ext_resource type="PackedScene" uid="uid://bbv7l4ws1ovm8" path="res://exclamation_point_emmision.glb" id="1_3yk7i"]
+[ext_resource type="PackedScene" uid="uid://bbv7l4ws1ovm8" path="res://models/exclamation_point_emmision.glb" id="1_3yk7i"]
 
 [node name="ExclamationPoint" type="Node3D"]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://cpv50h8qtcfvv"]
 
-[ext_resource type="Script" path="res://StartMenu.gd" id="1_tm825"]
-[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="2_xlcts"]
-[ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="3_rxbai"]
-[ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="4_vw3h3"]
-[ext_resource type="AudioStream" uid="uid://dt7entkrlp51b" path="res://Sound/SFX/tavern_ambience.mp3" id="5_husg5"]
-[ext_resource type="AudioStream" uid="uid://bncbvea8wjxbf" path="res://Sound/Music/MainMenuLoop.wav" id="5_k6arv"]
+[ext_resource type="Script" path="res://start_menu/StartMenu.gd" id="1_jid25"]
+[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="2_2bk2a"]
+[ext_resource type="Texture2D" uid="uid://dibraa7dhtvih" path="res://textures/scroll_tex.jpg" id="3_t8t18"]
+[ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="4_cpw5j"]
+[ext_resource type="AudioStream" uid="uid://bncbvea8wjxbf" path="res://Sound/Music/MainMenuLoop.wav" id="5_nqta3"]
+[ext_resource type="AudioStream" uid="uid://dt7entkrlp51b" path="res://Sound/SFX/tavern_ambience.mp3" id="6_e6ppn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6wal"]
 
@@ -115,7 +115,7 @@ _data = {
 }
 
 [node name="StartMenu" type="CanvasLayer"]
-script = ExtResource("1_tm825")
+script = ExtResource("1_jid25")
 
 [node name="Background" type="Node3D" parent="."]
 visible = false
@@ -127,7 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_xlcts")
+theme = ExtResource("2_2bk2a")
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
 visible = false
@@ -142,7 +142,7 @@ offset_right = 51.0
 offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_rxbai")
+texture = ExtResource("3_t8t18")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
@@ -162,7 +162,7 @@ layout_mode = 2
 
 [node name="Game Title" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_xlcts")
+theme = ExtResource("2_2bk2a")
 theme_override_font_sizes/font_size = 200
 text = "GRUELHUB"
 horizontal_alignment = 1
@@ -184,7 +184,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
 text = "Start"
 
 [node name="TrumpetSFX" type="AudioStreamPlayer" parent="Menu/MarginContainer/VBoxContainer/Start Button"]
-stream = ExtResource("4_vw3h3")
+stream = ExtResource("4_cpw5j")
 volume_db = -4.339
 
 [node name="MarginContainer2" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
@@ -221,21 +221,21 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_klw15")
 text = "Quit"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_k6arv")
+stream = ExtResource("5_nqta3")
 volume_db = -80.0
 autoplay = true
 
 [node name="Music2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_k6arv")
+stream = ExtResource("5_nqta3")
 autoplay = true
 
 [node name="BG Tavern Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_husg5")
+stream = ExtResource("6_e6ppn")
 volume_db = -19.0
 autoplay = true
 
 [node name="BG Tavern Ambience2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_husg5")
+stream = ExtResource("6_e6ppn")
 volume_db = -50.121
 autoplay = true
 

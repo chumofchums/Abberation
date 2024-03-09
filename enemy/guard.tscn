@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://dn05ucbbktbtv"]
 
-[ext_resource type="Script" path="res://guard.gd" id="1_t0c1g"]
-[ext_resource type="Material" uid="uid://b82cox21okduo" path="res://materials/enemy.material" id="2_xcdr1"]
-[ext_resource type="PackedScene" uid="uid://d1xu038n6ksd0" path="res://patrol.tscn" id="3_1x4kb"]
-[ext_resource type="PackedScene" uid="uid://q1p6urfuuyri" path="res://cone.tscn" id="4_j1mga"]
-[ext_resource type="PackedScene" uid="uid://bqq0ycg4wq2p" path="res://exclamation_point.tscn" id="5_dadhk"]
+[ext_resource type="Script" path="res://enemy/guard.gd" id="1_p31my"]
+[ext_resource type="Material" uid="uid://b82cox21okduo" path="res://materials/enemy.material" id="2_f12ek"]
+[ext_resource type="PackedScene" uid="uid://q1p6urfuuyri" path="res://enemy/cone.tscn" id="3_tnd34"]
+[ext_resource type="PackedScene" uid="uid://d1xu038n6ksd0" path="res://enemy/patrol.tscn" id="4_f0sgd"]
+[ext_resource type="PackedScene" uid="uid://bqq0ycg4wq2p" path="res://enemy/exclamation_point.tscn" id="5_lumfg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3bhdj"]
 
@@ -69,19 +69,19 @@ radius = 1.08034
 [node name="Guard" type="CharacterBody3D" node_paths=PackedStringArray("patrol_direction")]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_t0c1g")
+script = ExtResource("1_p31my")
 patrol_direction = NodePath("patrol")
 
 [node name="visuals" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_3bhdj")
-surface_material_override/0 = ExtResource("2_xcdr1")
+surface_material_override/0 = ExtResource("2_f12ek")
 
 [node name="VisionArea" type="Area3D" parent="visuals"]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, -1, 0)
 collision_mask = 2
 
-[node name="Cone" parent="visuals/VisionArea" instance=ExtResource("4_j1mga")]
+[node name="Cone" parent="visuals/VisionArea" instance=ExtResource("3_tnd34")]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 1.38729, -1.58247)
 layers = 0
 
@@ -95,7 +95,7 @@ shape = SubResource("ConvexPolygonShape3D_55fub")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="patrol" parent="." instance=ExtResource("3_1x4kb")]
+[node name="patrol" parent="." instance=ExtResource("4_f0sgd")]
 group_name = "Guard"
 
 [node name="VisionTimer" type="Timer" parent="."]
@@ -108,7 +108,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8wsic")
 }
 
-[node name="ExclamationPoint" parent="." instance=ExtResource("5_dadhk")]
+[node name="ExclamationPoint" parent="." instance=ExtResource("5_lumfg")]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0)
 
 [node name="HitBox" type="Area3D" parent="."]

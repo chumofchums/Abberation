@@ -22,7 +22,7 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func load_game():
-	LoadManager.load_scene("res://world.tscn")
+	LoadManager.load_scene("res://levels/world.tscn")
 	#LoadManager.load_scene(Globals.world1)
 
 func _on_how_to_button_pressed() -> void:

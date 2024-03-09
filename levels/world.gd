@@ -10,7 +10,7 @@ extends Node3D
 @onready var transition_player: AnimationPlayer = $Transition/AnimationPlayer
 @onready var guard_spawn: Node3D = $GuardSpawn
 
-var guard = preload("res://guard.tscn")
+var guard = preload("res://enemy/guard.tscn")
 
 var cutscene_complete: bool = false
 
@@ -18,9 +18,15 @@ func _ready() -> void:
 	var timer = get_node("Timer")
 	timer.timeout.connect(start_cutscene)
 
-
 func start_cutscene() -> void:
 	cutscene_player.play("cutscene")
+
+func start_explanation():
+	
+	
+	
+	#start_game()
+	pass
 
 func start_game():
 	Globals.game_started = true
@@ -39,7 +45,6 @@ func _on_guard_chase_player() -> void:
 
 func _on_player_player_caught() -> void:
 	reset_player()
-	
 
 func reset_player():
 	game_music.pitch_scale = 1

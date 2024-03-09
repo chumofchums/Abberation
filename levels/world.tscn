@@ -1,16 +1,16 @@
 [gd_scene load_steps=21 format=3 uid="uid://cmxvgauvx41nb"]
 
-[ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="1_0et4a"]
-[ext_resource type="Script" path="res://world.gd" id="1_sg2n5"]
-[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="2_kbh0v"]
-[ext_resource type="Texture2D" uid="uid://e16ve44ewb5t" path="res://textures/grass/Grass_04.png" id="4_2rlun"]
-[ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_fxljq"]
-[ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://guard.tscn" id="6_3dir3"]
-[ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_qvxo6"]
-[ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_5qrc6"]
-[ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_12g1q"]
-[ext_resource type="AudioStream" uid="uid://dqurfao108qau" path="res://Sound/SFX/tada_horns.wav" id="17_o8vye"]
-[ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="19_gic0p"]
+[ext_resource type="Script" path="res://levels/world.gd" id="1_man8l"]
+[ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="2_hwc8g"]
+[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="3_qnap4"]
+[ext_resource type="Texture2D" uid="uid://e16ve44ewb5t" path="res://textures/grass/Grass_04.png" id="4_huh6c"]
+[ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_vshxp"]
+[ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_u6vxg"]
+[ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://enemy/guard.tscn" id="7_ygmut"]
+[ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="8_1o7e2"]
+[ext_resource type="AudioStream" uid="uid://dqurfao108qau" path="res://Sound/SFX/tada_horns.wav" id="9_a5ple"]
+[ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_0hyh6"]
+[ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_n6t48"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_757gv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,10 +35,10 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 [sub_resource type="PlaneMesh" id="PlaneMesh_8hjyh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mni71"]
-albedo_texture = ExtResource("4_2rlun")
+albedo_texture = ExtResource("4_huh6c")
 normal_enabled = true
 normal_scale = 0.64
-normal_texture = ExtResource("5_fxljq")
+normal_texture = ExtResource("5_vshxp")
 uv1_scale = Vector3(12.94, 12.94, 12.94)
 uv1_triplanar = true
 
@@ -142,7 +142,7 @@ _data = {
 }
 
 [node name="world" type="Node3D"]
-script = ExtResource("1_sg2n5")
+script = ExtResource("1_man8l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -158,105 +158,105 @@ navigation_mesh = SubResource("NavigationMesh_o18lv")
 
 [node name="Ground" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
-material_override = ExtResource("1_0et4a")
+material_override = ExtResource("2_hwc8g")
 use_collision = true
 size = Vector3(36, 0.1, 34)
 
 [node name="HedgeWall" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 16.1377)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(36, 4, 1)
 
 [node name="HedgeWall2" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -16.9838)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(36, 4, 1)
 
 [node name="HedgeWall3" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37312e-08, 0, 1.00045, 0, 1.00045, 0, -1.00045, 0, -4.37312e-08, 18.1068, 2, -0.512)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(34, 4, 1)
 
 [node name="HedgeWall4" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.9834, 2, -0.512)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(34, 4, 1)
 
 [node name="HedgeWall5" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.23543, 2, -2.80614)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(14.9448, 4, 1)
 
 [node name="HedgeWall8" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.2952, 2, 11.2333)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(9.12915, 4, 1)
 
 [node name="HedgeWall9" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.4606, 2, 11.2333)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(9.12915, 4, 1)
 
 [node name="HedgeWall10" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.892, 2, 5.13574)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(14.9035, 4, 1)
 
 [node name="HedgeWall11" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, 5.06441)
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(14.6915, 4, 1)
 
 [node name="HedgeWall12" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, -12.4545)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall13" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.17186, 2, -12.4545)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall14" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.73961, 2, -12.4545)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall15" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.96057, 2, 11.9087)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(8.22, 4, 1)
 
 [node name="HedgeWall6" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56888, 2, -2.80614)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(3.66895, 4, 1)
 
 [node name="HedgeWall7" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3525, 2, -2.80614)
 layers = 2
-material_override = ExtResource("2_kbh0v")
+material_override = ExtResource("3_qnap4")
 use_collision = true
 size = Vector3(9.58789, 4, 1)
 
@@ -277,12 +277,12 @@ transform = Transform3D(263.828, 0, 0, 0, 263.828, 0, 0, 0, 263.828, 0, -0.2, 0)
 mesh = SubResource("PlaneMesh_8hjyh")
 surface_material_override/0 = SubResource("StandardMaterial3D_mni71")
 
-[node name="Player" parent="." instance=ExtResource("6_qvxo6")]
-transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -0.359015, 0, 2.63688)
+[node name="Player" parent="." instance=ExtResource("6_u6vxg")]
+transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -12.4254, -0.0138213, -13.5756)
 
-[node name="Guard" parent="." instance=ExtResource("6_3dir3")]
+[node name="Guard" parent="." instance=ExtResource("7_ygmut")]
 
-[node name="chest" parent="." instance=ExtResource("19_gic0p")]
+[node name="chest" parent="." instance=ExtResource("8_1o7e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0554, 0.499725, -9.89912)
 
 [node name="IntroCutscene" type="Node3D" parent="."]
@@ -309,10 +309,10 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CutsceneAudio" type="AudioStreamPlayer" parent="IntroCutscene"]
-stream = ExtResource("17_o8vye")
+stream = ExtResource("9_a5ple")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_5qrc6")
+stream = ExtResource("10_0hyh6")
 volume_db = -16.0
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
@@ -323,7 +323,7 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="Transition" parent="." instance=ExtResource("11_12g1q")]
+[node name="Transition" parent="." instance=ExtResource("11_n6t48")]
 
 [node name="GuardSpawn" type="Node3D" parent="."]
 

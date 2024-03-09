@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmy3p2bbgtd5m"]
+[gd_scene load_steps=28 format=3 uid="uid://dmy3p2bbgtd5m"]
 
-[ext_resource type="Script" path="res://StartMenu.gd" id="1_wogsy"]
+[ext_resource type="Script" path="res://start_menu/StartMenu.gd" id="1_wogsy"]
+[ext_resource type="Script" path="res://start_menu/CandleLight.gd" id="2_2l714"]
 [ext_resource type="Texture2D" uid="uid://go62menjajjf" path="res://start_menu/wood_cartoon_carved_instructions.jpg" id="2_oo3k0"]
 [ext_resource type="Texture2D" uid="uid://b72ujck2knwx2" path="res://start_menu/Middle_Scroll.png" id="2_rm8yt"]
 [ext_resource type="Texture2D" uid="uid://dgse0vcpspsx7" path="res://start_menu/Left_Scroll.png" id="3_4smsd"]
@@ -12,6 +13,15 @@
 [ext_resource type="AudioStream" uid="uid://1qrr8jlsr44s" path="res://Sound/SFX/2 tone trumpet.wav" id="7_14xb8"]
 [ext_resource type="AudioStream" uid="uid://bncbvea8wjxbf" path="res://Sound/Music/MainMenuLoop.wav" id="9_7516q"]
 [ext_resource type="AudioStream" uid="uid://dt7entkrlp51b" path="res://Sound/SFX/tavern_ambience.mp3" id="10_lcmu4"]
+
+[sub_resource type="Gradient" id="Gradient_n4gmr"]
+offsets = PackedFloat32Array(0, 0.703264)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_khfks"]
+gradient = SubResource("Gradient_n4gmr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_0vre7"]
 length = 0.001
@@ -146,6 +156,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CandleLight:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 350)]
 }
 
 [sub_resource type="Animation" id="Animation_hi1gw"]
@@ -295,6 +317,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [0, 2]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CandleLight:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 750), Vector2(640, 350)]
+}
 
 [sub_resource type="Animation" id="Animation_kxelo"]
 resource_name = "open_scroll"
@@ -382,6 +416,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CandleLight:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 350), Vector2(640, 750)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lewt4"]
@@ -499,7 +545,17 @@ _data = {
 }
 
 [node name="Scroll" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_wogsy")
+
+[node name="CandleLight" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(640, 750)
+color = Color(0.909804, 0.4, 0, 1)
+energy = 2.5
+texture = SubResource("GradientTexture2D_khfks")
+texture_scale = 20.0
+script = ExtResource("2_2l714")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.560784, 0.560784, 0.560784, 1)
@@ -512,6 +568,7 @@ texture = ExtResource("2_oo3k0")
 expand_mode = 1
 
 [node name="Back Button" type="Button" parent="TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 1174.0
 offset_top = 649.0
@@ -528,7 +585,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MiddleScroll"]
 self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
@@ -537,6 +593,7 @@ offset_left = 152.0
 offset_top = 92.0
 offset_right = 1104.0
 offset_bottom = 635.0
+value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("2_rm8yt")
 
@@ -556,19 +613,19 @@ mouse_filter = 2
 self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
 layout_mode = 0
 offset_left = 50.0
-offset_top = 25.855
+offset_top = 23.0
 offset_right = 153.0
-offset_bottom = 699.855
+offset_bottom = 697.0
 texture = ExtResource("3_4smsd")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="Panel2"]
 self_modulate = Color(0.517647, 0.517647, 0.517647, 1)
 layout_mode = 0
-offset_left = 113.445
-offset_top = 16.0
-offset_right = 231.445
-offset_bottom = 714.0
+offset_left = 1100.0
+offset_top = 20.0
+offset_right = 1218.0
+offset_bottom = 713.0
 scale = Vector2(0.97, 0.97)
 pivot_offset = Vector2(0, 360)
 texture = ExtResource("4_iaki1")
@@ -587,7 +644,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("5_v1p6l")
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
@@ -627,11 +683,8 @@ layout_mode = 2
 theme = ExtResource("5_v1p6l")
 theme_override_font_sizes/font_size = 200
 text = "GRUELHUB"
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="Start Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_bottom = NodePath("../How to Button")
@@ -653,7 +706,6 @@ layout_mode = 2
 theme_override_constants/margin_top = 10
 
 [node name="How to Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../Start Button")
@@ -671,7 +723,6 @@ layout_mode = 2
 theme_override_constants/margin_top = 10
 
 [node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../How to Button")
