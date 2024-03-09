@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var cutscene_camera: Camera3D = $IntroCutscene/CutsceneCamera
 @onready var cutscene_player: AnimationPlayer = $IntroCutscene/CutscenePlayer
-@onready var gruel_temp_bar: ProgressBar = $Player/PlayerUI/GruelTempBar
+@onready var gruel_temp_bar: TextureProgressBar = $Player/PlayerUI/GruelTemperature
 @onready var hearts: HBoxContainer = $Player/PlayerUI/HeartContainer
 @onready var world: Node3D = $"."
 @onready var color_rect: ColorRect = $IntroCutscene/IntroCutsceneColorRect
