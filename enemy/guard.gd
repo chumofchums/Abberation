@@ -17,8 +17,8 @@ var direction: Vector3 = Vector3.ZERO
 var player_spotted: bool = false
 var rotation_speed: float = 20.0
 
-#func _ready() -> void:
-	#speed = PATROL_SPEED
+func _ready() -> void:
+	speed = PATROL_SPEED
 
 func _physics_process(delta: float) -> void:
 	var weight := 1.0 - pow(0.5, delta * rotation_speed)
@@ -50,7 +50,6 @@ func _on_player_spotted():
 	player_spotted = true
 	chase_player.emit()
 	anim.play("player_spotted")
-
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	if area.name == "HurtBox":

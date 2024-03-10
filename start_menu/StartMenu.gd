@@ -31,3 +31,4 @@ func _on_how_to_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	scroll_anim.play("open_scroll")
+	start_button.grab_focus()

@@ -52,5 +52,6 @@ func reset_player():
 	await transition_player.animation_finished
 	var guard_instance = guard.instantiate()
 	guard_instance.position = guard_spawn.global_transform.origin
+	guard_instance.chase_player.connect(_on_guard_chase_player)
 	add_child(guard_instance)
 	transition_player.play("fade_in")
