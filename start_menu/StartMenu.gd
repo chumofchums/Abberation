@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var start_button: Button = $"Menu/MarginContainer/VBoxContainer/Start Button"
 @onready var bg_ambience: AudioStreamPlayer = $"BG Tavern Ambience"
 @onready var back_button: Button = $"TextureRect/Back Button"
+@onready var how_to_button: Button = $"Menu/MarginContainer/VBoxContainer/How to Button"
 
 func _ready() -> void:
 	start_button.grab_focus()
@@ -31,4 +32,4 @@ func _on_how_to_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	scroll_anim.play("open_scroll")
-	start_button.grab_focus()
+	how_to_button.grab_focus()

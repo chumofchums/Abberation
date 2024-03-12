@@ -30,6 +30,7 @@ func start_load() -> void:
 	if state == OK:
 		set_process(true)
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	var load_status = ResourceLoader.load_threaded_get_status(_scene_path, progress)
 	match load_status:

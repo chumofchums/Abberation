@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=18 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_man8l"]
 [ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="2_hwc8g"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_u6vxg"]
 [ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://enemy/guard.tscn" id="7_ygmut"]
 [ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="8_1o7e2"]
-[ext_resource type="AudioStream" uid="uid://dqurfao108qau" path="res://Sound/SFX/tada_horns.wav" id="9_a5ple"]
+[ext_resource type="PackedScene" uid="uid://cg7vrgo2utpw5" path="res://opening_cutscene/intro_cutscene.tscn" id="9_s3dwu"]
 [ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_0hyh6"]
 [ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_n6t48"]
 
@@ -27,6 +27,7 @@ ambient_light_color = Color(0.964706, 0.964706, 0.964706, 1)
 tonemap_mode = 2
 sdfgi_enabled = true
 glow_enabled = true
+fog_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o18lv"]
 vertices = PackedVector3Array(8.6731, 4.4, -12.523, 0.673096, 4.4, -12.273, 8.6731, 4.4, -12.273, 13.6731, 4.4, 15.727, 13.4231, 4.4, 6.97696, 13.1731, 4.4, 15.977, -11.8269, 4.4, 15.977, -12.3269, 4.4, 6.97696, -12.3269, 4.4, 15.727, -7.8269, 4.4, 11.977, 0.673096, 4.4, 11.727, -7.5769, 4.4, 11.477, -8.0769, 4.4, -16.773, -7.5769, 4.4, -8.52304, -7.3269, 4.4, -16.773, 17.9231, 4.4, -3.27304, 8.9231, 4.4, -2.77304, 17.9231, 4.4, -2.52304, 8.6731, 4.4, -12.523, 8.6731, 4.4, -12.273, 9.1731, 4.4, -8.52304, 8.6731, 4.4, -12.523, 9.1731, 4.4, -8.52304, 9.4231, 4.4, -16.773, 8.6731, 4.4, -16.773, 18.1731, 4.4, 16.227, 13.1731, 4.4, 15.977, -11.8269, 4.4, 15.977, -17.0769, 4.4, 16.227, -11.8269, 4.4, 15.977, -12.3269, 4.4, 15.727, -16.5769, 4.4, 15.977, -17.0769, 4.4, 16.227, 17.9231, 4.4, 15.727, 13.6731, 4.4, 15.727, 13.1731, 4.4, 15.977, 18.1731, 4.4, 16.227, -17.0769, 4.4, -17.023, -16.8269, 4.4, -16.523, -8.0769, 4.4, -16.773, -7.5769, 4.4, -2.52304, -2.0769, 4.4, -3.02304, -16.8269, 4.4, -3.27304, -16.5769, 4.4, -2.77304, -7.8269, 4.4, -2.52304, -17.0769, 4.4, -17.023, -8.0769, 4.4, -16.773, -7.3269, 4.4, -16.773, -16.8269, 4.4, -3.27304, -16.8269, 4.4, -16.523, -17.0769, 4.4, -17.023, -7.8269, 4.4, -2.52304, -7.8269, 4.4, 11.977, -7.5769, 4.4, 11.477, -7.5769, 4.4, -2.52304, 18.1731, 4.4, 16.227, 18.1731, 4.4, -17.023, 17.9231, 4.4, -2.52304, 17.9231, 4.4, 15.727, 18.1731, 4.4, -17.023, 17.6731, 4.4, -16.773, 17.9231, 4.4, -3.27304, 18.1731, 4.4, -17.023, 17.9231, 4.4, -3.27304, 17.9231, 4.4, -2.52304, -16.5769, 4.4, 15.977, -16.5769, 4.4, -2.77304, -16.8269, 4.4, -3.27304, -16.8269, 4.4, -3.27304, -17.0769, 4.4, -17.023, -17.0769, 4.4, 16.227, -16.5769, 4.4, 15.977, 18.1731, 4.4, -17.023, 9.4231, 4.4, -16.773, 17.6731, 4.4, -16.773, 18.1731, 4.4, -17.023, 8.6731, 4.4, -16.773, 9.4231, 4.4, -16.773, 18.1731, 4.4, -17.023, -17.0769, 4.4, -17.023, -7.3269, 4.4, -16.773, 8.6731, 4.4, -16.773, -7.5769, 0.4, -4.02304, -7.5769, 0.4, -7.52304, -8.8269, 0.4, -7.77304, -15.8269, 0.4, -4.02304, -8.8269, 0.4, -7.77304, -8.8269, 0.4, -15.773, -15.8269, 0.4, -15.773, -15.8269, 0.4, -4.02304, -1.3269, 0.4, -4.02304, -1.0769, 0.4, -2.77304, 2.1731, 0.4, -2.77304, 2.4231, 0.4, -4.02304, 3.6731, 0.4, -11.273, -0.0769043, 0.4, -11.273, -0.326904, 0.4, -13.273, 7.9231, 0.4, -13.523, 7.9231, 0.4, -15.773, -6.5769, 0.4, -15.773, -6.5769, 0.4, -7.77304, -7.5769, 0.4, -7.52304, -7.5769, 0.4, -4.02304, -1.3269, 0.4, -4.02304, -6.5769, 0.4, -7.77304, -1.3269, 0.4, -4.02304, -0.0769043, 0.4, -11.273, -0.326904, 0.4, -13.273, -6.5769, 0.4, -15.773, 2.4231, 0.4, -4.02304, 3.9231, 0.4, -4.02304, 3.6731, 0.4, -11.273, 10.1731, 0.4, -7.77304, 8.9231, 0.4, -7.52304, 8.9231, 0.4, -4.02304, 16.9231, 0.4, -4.02304, 16.9231, 0.4, -15.773, 10.1731, 0.4, -15.773, 10.1731, 0.4, -7.77304, 16.9231, 0.4, -4.02304, 6.9231, 0.4, -2.52304, 7.9231, 0.4, -2.77304, 7.9231, 0.4, -3.77304, 6.6731, 0.4, -4.02304, 3.9231, 0.4, -4.02304, 6.6731, 0.4, -4.02304, 7.9231, 0.4, -7.77304, 7.9231, 0.4, -11.273, 3.6731, 0.4, -11.273, 6.6731, 0.4, -4.02304, 7.9231, 0.4, -3.77304, 8.9231, 0.4, -4.02304, 8.9231, 0.4, -7.52304, 7.9231, 0.4, -7.77304, 5.6731, 4.4, -2.52304, 5.9231, 4.4, 12.227, 5.9231, 4.4, -3.02304, 3.1731, 4.4, -3.02304, 5.6731, 4.4, -2.52304, 5.9231, 4.4, -3.02304, 1.4231, 0.4, 10.727, 1.6731, 0.4, 11.227, 4.6731, 0.4, 11.227, 4.6731, 0.4, -1.77304, 2.4231, 0.4, -1.77304, 2.4231, 0.4, -1.77304, 2.1731, 0.4, -2.77304, -1.0769, 0.4, -2.77304, -1.3269, 0.4, -1.77304, 1.4231, 0.4, 10.727, -1.3269, 0.4, -1.77304, -6.5769, 0.4, -1.77304, -6.5769, 0.4, 10.727, 1.4231, 0.4, 10.727, 8.1731, 0.4, -1.77304, 7.9231, 0.4, -2.77304, 6.9231, 0.4, -2.52304, 6.9231, 0.4, 8.22696, 12.4231, 0.4, 8.22696, 12.4231, 0.4, 6.22696, 8.1731, 0.4, -1.77304, 6.9231, 0.4, -2.52304, 14.4231, 0.4, 5.97696, 14.6731, 0.4, 14.977, 16.9231, 0.4, 14.977, 16.9231, 0.4, -1.77304, 12.4231, 0.4, 6.22696, 14.4231, 0.4, 5.97696, 16.9231, 0.4, -1.77304, 8.1731, 0.4, -1.77304, -11.3269, 0.4, 5.97696, -8.8269, 0.4, 5.72696, -8.8269, 0.4, -1.77304, -11.3269, 0.4, 5.97696, -8.8269, 0.4, -1.77304, -15.8269, 0.4, -1.77304, -13.3269, 0.4, 6.22696, -15.8269, 0.4, 14.977, -13.3269, 0.4, 14.977, -13.3269, 0.4, 6.22696, -15.8269, 0.4, -1.77304, -6.5769, 0.4, 14.977, -6.5769, 0.4, 12.977, -8.8269, 0.4, 12.727, -11.0769, 0.4, 14.977, -11.3269, 0.4, 5.97696, -11.0769, 0.4, 14.977, -8.8269, 0.4, 12.727, -8.8269, 0.4, 5.72696, 6.9231, 0.4, 12.977, 5.9231, 0.4, 13.227, 5.9231, 0.4, 14.977, 12.4231, 0.4, 14.977, 12.4231, 0.4, 8.22696, 6.9231, 0.4, 8.22696, 6.9231, 0.4, 12.977, 12.4231, 0.4, 14.977, 5.9231, 0.4, 14.977, 5.9231, 0.4, 13.227, 4.6731, 0.4, 12.977, 1.4231, 0.4, 12.977, 4.6731, 0.4, 12.977, 4.6731, 0.4, 11.227, 1.6731, 0.4, 11.227, 1.4231, 0.4, 12.977, -6.5769, 0.4, 14.977, 5.9231, 0.4, 14.977, 1.4231, 0.4, 12.977, -6.5769, 0.4, 12.977)
@@ -41,105 +42,6 @@ normal_scale = 0.64
 normal_texture = ExtResource("5_vshxp")
 uv1_scale = Vector3(12.94, 12.94, 12.94)
 uv1_triplanar = true
-
-[sub_resource type="Animation" id="Animation_ib3b6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IntroCutscene/CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 14.6999, 21.1733)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IntroCutscene/IntroCutsceneColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_svhce"]
-resource_name = "cutscene"
-length = 3.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IntroCutscene/CutsceneCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 14.6999, 21.1733), Vector3(-12.0866, 14.6999, -6.47489), Vector3(-12.2136, 3.80627, -11.6503)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IntroCutscene/CutsceneCamera:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.869383, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("IntroCutscene/IntroCutsceneColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.4, 3.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_game"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IntroCutscene/CutsceneAudio:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2y86q"]
-_data = {
-"RESET": SubResource("Animation_ib3b6"),
-"cutscene": SubResource("Animation_svhce")
-}
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_man8l")
@@ -283,32 +185,9 @@ transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174
 [node name="Guard" parent="." instance=ExtResource("7_ygmut")]
 
 [node name="chest" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0554, 0.499725, -9.89912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61347, 0.499725, -14.9502)
 
-[node name="IntroCutscene" type="Node3D" parent="."]
-
-[node name="CutscenePlayer" type="AnimationPlayer" parent="IntroCutscene"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_2y86q")
-}
-
-[node name="CutsceneCamera" type="Camera3D" parent="IntroCutscene"]
-transform = Transform3D(1, 0, 0, 0, 0.645298, 0.763931, 0, -0.763931, 0.645298, 0, 14.6999, 21.1733)
-current = true
-fov = 74.3209
-
-[node name="IntroCutsceneColorRect" type="ColorRect" parent="IntroCutscene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CutsceneAudio" type="AudioStreamPlayer" parent="IntroCutscene"]
-stream = ExtResource("9_a5ple")
+[node name="IntroCutscene" parent="." instance=ExtResource("9_s3dwu")]
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_0hyh6")
@@ -328,5 +207,8 @@ autostart = true
 
 [connection signal="player_caught" from="Player" to="." method="_on_player_player_caught"]
 [connection signal="chase_player" from="Guard" to="." method="_on_guard_chase_player"]
+[connection signal="chest_opened" from="chest" to="Player/PlayerUI/GruelTemperature" method="_on_chest_chest_opened"]
 
+[editable path="Player"]
+[editable path="Player/visuals/PlayerInteractor"]
 [editable path="Transition"]

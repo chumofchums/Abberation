@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://owbgc06g6c5n" path="res://textures/wood_shield.png" id="10_7v7ri"]
 [ext_resource type="AudioStream" uid="uid://3j377x76akj8" path="res://Sound/SFX/Wood Hard 8.wav" id="11_45cul"]
 [ext_resource type="AudioStream" uid="uid://bif4iq6vhwys1" path="res://Sound/SFX/Wood Hard 1.wav" id="12_b64yh"]
+[ext_resource type="AudioStream" uid="uid://buyt0gf22evp4" path="res://Sound/SFX/twang.wav" id="13_0leiy"]
 [ext_resource type="AudioStream" uid="uid://d0yxmbprvmcji" path="res://Sound/SFX/Wood Hard 5.wav" id="13_yx5nk"]
 [ext_resource type="AudioStream" uid="uid://8ujfmg0ti0gl" path="res://Sound/SFX/sword sheath.wav" id="14_ogwv5"]
 
@@ -84,42 +85,11 @@ _data = {
 "to_overhead": SubResource("Animation_etfah")
 }
 
-[sub_resource type="Gradient" id="Gradient_dbvhc"]
-offsets = PackedFloat32Array(0, 0.104615, 1)
-colors = PackedColorArray(0, 0.560784, 0.419608, 1, 0.537255, 0.258824, 0, 1, 0.75339, 2.38247e-06, 5.77569e-07, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y44ri"]
+bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3ikr"]
-gradient = SubResource("Gradient_dbvhc")
-fill_from = Vector2(1, 1)
-
-[sub_resource type="GDScript" id="GDScript_kqsya"]
-script/source = "extends TextureProgressBar
-
-signal gruelTimeout
-
-var duration: float = 30.0
-var elapsed_time: float = 0.0
-var gruelCooled: bool = false
-
-@onready var bar: TextureProgressBar = $\".\"
-
-func _ready() -> void:
-	bar.value = bar.max_value
-
-func _process(delta: float) -> void:
-	if Globals.game_started:
-		elapsed_time += delta
-		var new_value = bar.max_value - (bar.max_value * elapsed_time/ duration)
-		bar.value = max(new_value, 0)
-	
-	if gruelCooled:
-		return
-	else:
-		if bar.value == 0:
-			gruelCooled = true
-			gruelTimeout.emit()
-			Globals.game_started = false
-"
+[sub_resource type="Theme" id="Theme_8kmbe"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_y44ri")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxvy"]
 
@@ -332,6 +302,18 @@ tracks/16/keys = {
 "method": &"grab_focus"
 }]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../FailCanvasLayer/FailScreen/Shield/AudioStreamPlayer:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
 _data = {
@@ -385,15 +367,6 @@ libraries = {
 script = ExtResource("5_xedqx")
 player = NodePath("..")
 
-[node name="GruelTempBar" type="ProgressBar" parent="PlayerUI"]
-visible = false
-offset_left = 18.0
-offset_top = 19.0
-offset_right = 91.0
-offset_bottom = 444.0
-fill_mode = 3
-script = ExtResource("6_yraga")
-
 [node name="HeartContainer" parent="PlayerUI" instance=ExtResource("7_ncvgp")]
 visible = false
 anchors_preset = 5
@@ -406,17 +379,17 @@ offset_bottom = 60.0
 grow_horizontal = 2
 size_flags_vertical = 0
 
-[node name="GruelTemperature" type="TextureProgressBar" parent="PlayerUI"]
+[node name="GruelTemperature" type="ProgressBar" parent="PlayerUI"]
 offset_left = 18.0
 offset_top = 18.0
 offset_right = 90.0
 offset_bottom = 445.0
+theme = SubResource("Theme_8kmbe")
 step = 0.1
 value = 100.0
 fill_mode = 3
-nine_patch_stretch = true
-texture_progress = SubResource("GradientTexture2D_j3ikr")
-script = SubResource("GDScript_kqsya")
+show_percentage = false
+script = ExtResource("6_yraga")
 
 [node name="FailCanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("8_wpubo")
@@ -470,6 +443,9 @@ offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_7v7ri")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FailCanvasLayer/FailScreen/Shield"]
+stream = ExtResource("13_0leiy")
 
 [node name="Gruel" type="Label" parent="FailCanvasLayer/FailScreen"]
 self_modulate = Color(1, 1, 1, 0)
@@ -620,7 +596,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00344563, 1.98696, -0.00172
 shape = SubResource("CapsuleShape3D_22p1v")
 
 [connection signal="health_zero" from="." to="PlayerUI" method="_on_player_health_zero"]
-[connection signal="gruelTimeout" from="PlayerUI/GruelTempBar" to="FailCanvasLayer/FailScreen" method="_on_gruel_temp_bar_gruel_timeout"]
+[connection signal="gruelTimeout" from="PlayerUI/GruelTemperature" to="FailCanvasLayer/FailScreen" method="_on_gruel_temperature_gruel_timeout"]
 [connection signal="gruel_cooled" from="FailCanvasLayer/FailScreen" to="." method="_on_fail_screen_gruel_cooled"]
 [connection signal="gruel_cooled" from="FailCanvasLayer/FailScreen" to="PlayerUI" method="_on_fail_screen_gruel_cooled"]
 [connection signal="pressed" from="FailCanvasLayer/FailScreen/VBoxContainer/Retry Button" to="FailCanvasLayer" method="_on_retry_button_pressed"]

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var gruel_temperature: TextureProgressBar = $GruelTemperature
+@onready var gruel_temperature: ProgressBar = $GruelTemperature
 @onready var heart_container: HBoxContainer = $HeartContainer
 @export var player: CharacterBody3D
 

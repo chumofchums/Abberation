@@ -19,6 +19,7 @@ var rotation_speed: float = 20.0
 
 func _ready() -> void:
 	speed = PATROL_SPEED
+	
 
 func _physics_process(delta: float) -> void:
 	var weight := 1.0 - pow(0.5, delta * rotation_speed)

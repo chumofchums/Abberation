@@ -8,7 +8,6 @@ signal health_zero
 @onready var camera_boom: Node3D = $camera_boom
 @onready var player_animator: AnimationPlayer = $"visuals/Delivery Boy/PlayerAnimator"
 @onready var spawn_location: Node3D = $"../PlayerSpawn"
-@onready var timer: Timer = $"visuals/Delivery Boy/Timer"
 @onready var fail_cutscene: AnimationPlayer = $FailCanvasLayer/FailCutscene
 
 const WALK_SPEED= 5.0
@@ -61,7 +60,7 @@ func _on_hit_area_area_entered(area: Area3D) -> void:
 	
 		if current_health <= 0:
 			emit_signal("health_zero")
-			_on_fail_screen_gruel_cooled()
+			fail_cutscene.play("fail_anim")
 
 func _on_fail_screen_gruel_cooled() -> void:
 	fail_cutscene.play("fail_anim")
