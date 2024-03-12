@@ -5,6 +5,7 @@ signal chest_opened
 @onready var flash: GPUParticles3D = $explosion/flash
 @onready var fire: GPUParticles3D = $explosion/fire
 @onready var smoke: GPUParticles3D = $explosion/smoke
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var highlight: MeshInstance3D = $visuals/highlight
 
@@ -12,6 +13,7 @@ func _on_interactable_focused(interactor: Interactor) -> void:
 	highlight.visible = true
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
+	audio.play()
 	sparks.emitting = true
 	flash.emitting = true
 	fire.emitting = true

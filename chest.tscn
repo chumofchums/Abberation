@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpb1vm3k708ep"]
+[gd_scene load_steps=34 format=3 uid="uid://cpb1vm3k708ep"]
 
 [ext_resource type="Script" path="res://chest.gd" id="1_qr4pt"]
 [ext_resource type="PackedScene" uid="uid://britqjf7cd27v" path="res://interaction/Interactable.tscn" id="2_xqesr"]
 [ext_resource type="Texture2D" uid="uid://b6gm8wc3cqh2x" path="res://textures/explosion/Flare00.PNG" id="3_b8xgx"]
 [ext_resource type="Material" uid="uid://b432hia78b151" path="res://materials/flare_00.tres" id="4_dgf04"]
+[ext_resource type="AudioStream" uid="uid://dfeujihycr51m" path="res://Sound/SFX/flame_chest.wav" id="5_36qb4"]
+[ext_resource type="PackedScene" uid="uid://cxekx2rqp17u2" path="res://torch.tscn" id="6_j4h4q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mkaw"]
 
@@ -205,6 +207,13 @@ randomness = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_803wd")
 draw_pass_1 = SubResource("QuadMesh_im6a7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_36qb4")
+volume_db = 2.574
+
+[node name="torch" parent="." instance=ExtResource("6_j4h4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992817, 0)
 
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
