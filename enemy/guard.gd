@@ -7,6 +7,8 @@ signal chase_player
 @onready var visuals: MeshInstance3D = $visuals
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @export var patrol_direction: Node3D
+@onready var model_anim: AnimationPlayer = $visuals/Guard/AnimationPlayer
+
 
 const PATROL_SPEED = 2
 const CHASE_SPEED = 3
@@ -35,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
 		
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
+	model_anim.play("patrol")
 	move_and_slide()
 
 func _on_vision_timer_timeout() -> void:

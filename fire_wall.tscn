@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3pwwfd8ldt2p"]
+
+[ext_resource type="Shader" uid="uid://drr7obtwwhv0n" path="res://fire_wall.tres" id="1_6fyhy"]
+[ext_resource type="Texture2D" uid="uid://bnxc5wkgt0mrv" path="res://textures/fire_wall/Flame01.png" id="2_wmg58"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k67bm"]
+render_priority = 0
+shader = ExtResource("1_6fyhy")
+shader_parameter/MainTexture = ExtResource("2_wmg58")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tpk7n"]
+gravity = Vector3(0, 0, 0)
+scale_min = 1.2
+scale_max = 1.2
+color = Color(4, 1.25, 0.6, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_prwwj"]
+
+[node name="fire wall" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_k67bm")
+amount = 1
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_tpk7n")
+draw_pass_1 = SubResource("QuadMesh_prwwj")
