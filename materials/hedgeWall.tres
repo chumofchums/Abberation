@@ -4,5 +4,7 @@
 
 [resource]
 albedo_texture = ExtResource("1_hqstd")
-uv1_scale = Vector3(0.45, 0.45, 0.45)
+uv1_scale = Vector3(0.955, 0.955, 0.955)
+uv1_offset = Vector3(-0.575, -0.505, 0.535)
 uv1_triplanar = true
+uv1_triplanar_sharpness = 0.214466

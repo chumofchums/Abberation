@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://can8nnanfex8m"]
+
+[ext_resource type="PackedScene" uid="uid://c17heq7g4iyr5" path="res://models/arch.glb" id="1_why8x"]
+[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="2_4w3nt"]
+
+[node name="Arch" instance=ExtResource("1_why8x")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_4w3nt")

@@ -79,7 +79,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"start_game"
+"method": &"start_explanation"
 }]
 }
 tracks/4/type = "value"
@@ -120,7 +120,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="CutsceneAudio" type="AudioStreamPlayer" parent="."]

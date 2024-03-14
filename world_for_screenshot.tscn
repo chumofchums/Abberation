@@ -1,32 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=15 format=3 uid="uid://c0bpo6veat87r"]
 
-[ext_resource type="Script" path="res://levels/world.gd" id="1_man8l"]
-[ext_resource type="PackedScene" uid="uid://can8nnanfex8m" path="res://arch.tscn" id="2_d4agm"]
-[ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="2_hwc8g"]
-[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="3_qnap4"]
-[ext_resource type="Texture2D" uid="uid://e16ve44ewb5t" path="res://textures/grass/Grass_04.png" id="4_huh6c"]
-[ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_vshxp"]
-[ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_u6vxg"]
-[ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://enemy/guard.tscn" id="7_ygmut"]
-[ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="8_1o7e2"]
-[ext_resource type="PackedScene" uid="uid://cg7vrgo2utpw5" path="res://opening_cutscene/intro_cutscene.tscn" id="9_s3dwu"]
-[ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_0hyh6"]
-[ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_n6t48"]
-[ext_resource type="AudioStream" uid="uid://m0tlbukie7qm" path="res://Sound/SFX/APPLAUSE.mp3" id="13_7lyk3"]
-[ext_resource type="Script" path="res://levels/GameWon.gd" id="13_fq28o"]
-[ext_resource type="AudioStream" uid="uid://qxey1taa8juh" path="res://Sound/SFX/fanfare-46385.mp3" id="14_ya1u6"]
-[ext_resource type="PackedScene" uid="uid://dr0stn2epirtr" path="res://enemy/guard_2.tscn" id="15_244ag"]
-[ext_resource type="PackedScene" uid="uid://cnh00c3r0td04" path="res://explanation.tscn" id="16_jple7"]
+[ext_resource type="Material" uid="uid://cjjba7srjvvd2" path="res://materials/cobblestones.tres" id="2_daihk"]
+[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="3_skylw"]
+[ext_resource type="Texture2D" uid="uid://e16ve44ewb5t" path="res://textures/grass/Grass_04.png" id="4_t2v3u"]
+[ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_r80g5"]
+[ext_resource type="PackedScene" uid="uid://8r5wwsrjiw33" path="res://player/delivery_boy.tscn" id="7_abwvu"]
+[ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="8_27d4f"]
+[ext_resource type="PackedScene" uid="uid://2vkhkjxlo2ar" path="res://guard_model.tscn" id="8_po8fd"]
+[ext_resource type="Script" path="res://screenshot_cam.gd" id="9_7scfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pjvym"]
 sky_top_color = Color(0.207843, 0.254902, 0.321569, 1)
 
-[sub_resource type="Sky" id="Sky_ndeuf"]
+[sub_resource type="Sky" id="Sky_t0qja"]
 sky_material = SubResource("ProceduralSkyMaterial_pjvym")
 
 [sub_resource type="Environment" id="Environment_0fg2b"]
 background_mode = 2
-sky = SubResource("Sky_ndeuf")
+sky = SubResource("Sky_t0qja")
 ambient_light_source = 3
 ambient_light_color = Color(0.964706, 0.964706, 0.964706, 1)
 tonemap_mode = 2
@@ -44,22 +35,17 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 [sub_resource type="PlaneMesh" id="PlaneMesh_8hjyh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mni71"]
-albedo_texture = ExtResource("4_huh6c")
+albedo_texture = ExtResource("4_t2v3u")
 normal_enabled = true
 normal_scale = 0.64
-normal_texture = ExtResource("5_vshxp")
+normal_texture = ExtResource("5_r80g5")
 uv1_scale = Vector3(12.94, 12.94, 12.94)
 uv1_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p6ue3"]
-size = Vector3(3.53418, 3.71338, 1)
-
-[node name="world" type="Node3D"]
-script = ExtResource("1_man8l")
+[node name="world_for_screenshot" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
 shadow_enabled = true
 sky_mode = 2
 
@@ -71,110 +57,107 @@ environment = SubResource("Environment_0fg2b")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="level"]
 navigation_mesh = SubResource("NavigationMesh_o18lv")
 
-[node name="Arch" parent="level/NavigationRegion3D" instance=ExtResource("2_d4agm")]
-transform = Transform3D(0.785455, 0, 0, 0, 1.07822, 0, 0, 0, 1, -16.4718, 1, 16.0506)
-
 [node name="Ground" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
-material_override = ExtResource("2_hwc8g")
+material_override = ExtResource("2_daihk")
 use_collision = true
 size = Vector3(36, 0.1, 34)
 
 [node name="HedgeWall" type="CSGBox3D" parent="level/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04761, 2, 16.1377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 16.1377)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
-size = Vector3(30.9048, 4, 1)
+size = Vector3(36, 4, 1)
 
 [node name="HedgeWall2" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -16.9838)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(36, 4, 1)
 
 [node name="HedgeWall3" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37312e-08, 0, 1.00045, 0, 1.00045, 0, -1.00045, 0, -4.37312e-08, 18.1068, 2, -0.512)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(34, 4, 1)
 
 [node name="HedgeWall4" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.9834, 2, -0.512)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(34, 4, 1)
 
 [node name="HedgeWall5" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.23543, 2, -2.80614)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(14.9448, 4, 1)
 
 [node name="HedgeWall8" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.2952, 2, 11.2333)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(9.12915, 4, 1)
 
 [node name="HedgeWall9" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.4606, 2, 11.2333)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(9.12915, 4, 1)
 
 [node name="HedgeWall10" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.892, 2, 5.13574)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(14.9035, 4, 1)
 
 [node name="HedgeWall11" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, 5.06441)
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(14.6915, 4, 1)
 
 [node name="HedgeWall12" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.58203, 2, -12.4545)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall13" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.17186, 2, -12.4545)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall14" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.73961, 2, -12.4545)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(8.7757, 4, 1)
 
 [node name="HedgeWall15" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.96057, 2, 11.9087)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(8.22, 4, 1)
 
 [node name="HedgeWall6" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56888, 2, -2.80614)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(3.66895, 4, 1)
 
 [node name="HedgeWall7" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3525, 2, -2.80614)
 layers = 2
-material_override = ExtResource("3_qnap4")
+material_override = ExtResource("3_skylw")
 use_collision = true
 size = Vector3(9.58789, 4, 1)
 
@@ -191,104 +174,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63742, 0, 9.72467)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6596, 0, 9.72467)
 
 [node name="World_Ground" type="MeshInstance3D" parent="level"]
-transform = Transform3D(263.828, 0, 0, 0, 263.828, 0, 0, 0, 263.828, 0.832344, -0.2, -0.208088)
+transform = Transform3D(263.828, 0, 0, 0, 263.828, 0, 0, 0, 263.828, 0, -0.2, 0)
 mesh = SubResource("PlaneMesh_8hjyh")
 surface_material_override/0 = SubResource("StandardMaterial3D_mni71")
 
-[node name="Marker3D5" type="Marker3D" parent="level" groups=["Guard2"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74516, 0, 14.1654)
+[node name="chest" parent="." instance=ExtResource("8_27d4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59889, 0.499725, 10.2801)
 
-[node name="Marker3D6" type="Marker3D" parent="level" groups=["Guard2"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7602, 0, 14.2058)
+[node name="chest2" parent="." instance=ExtResource("8_27d4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75032, 0.499723, -10.9626)
 
-[node name="Marker3D7" type="Marker3D" parent="level" groups=["Guard3"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.24792, 0, -5.85072)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.67284, 1.78694, -14.8079)
+current = true
+fov = 33.1572
+script = ExtResource("9_7scfk")
 
-[node name="Marker3D8" type="Marker3D" parent="level" groups=["Guard3"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6648, 0, -5.85072)
+[node name="Delivery Boy" parent="." instance=ExtResource("7_abwvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
-[node name="Player" parent="." instance=ExtResource("6_u6vxg")]
-transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -14.6088, -0.0656487, 11.7523)
-
-[node name="Guard" parent="." instance=ExtResource("7_ygmut")]
-
-[node name="chest" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61347, 0.499725, -14.5784)
-
-[node name="chest4" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0063, 0.499725, 14.6513)
-
-[node name="IntroCutscene" parent="." instance=ExtResource("9_s3dwu")]
-
-[node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_0hyh6")
-volume_db = -16.0
-
-[node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.381, 1.90735e-06, -14.7098)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[node name="Transition" parent="." instance=ExtResource("11_n6t48")]
-
-[node name="GuardSpawn" type="Node3D" parent="."]
-
-[node name="chest2" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2533, 0.595536, -6.15674)
-
-[node name="chest3" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0228, 0.516836, -0.747771)
-
-[node name="Guard2" parent="." instance=ExtResource("7_ygmut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52325, 0, 14.2902)
-
-[node name="patrol" parent="Guard2" index="3"]
-group_name = "Guard2"
-
-[node name="End of Level" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2817, 1.84925, 17.4894)
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="End of Level"]
-shape = SubResource("BoxShape3D_p6ue3")
-
-[node name="GameWon" type="Node3D" parent="."]
-script = ExtResource("13_fq28o")
-
-[node name="GameWonAudio" type="AudioStreamPlayer" parent="GameWon"]
-stream = ExtResource("13_7lyk3")
-volume_db = -9.782
-
-[node name="GameWonSFX" type="AudioStreamPlayer" parent="GameWon"]
-stream = ExtResource("14_ya1u6")
-volume_db = -3.089
-
-[node name="Guard3" parent="." instance=ExtResource("15_244ag")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7775, 0, -6.32255)
-
-[node name="patrol" parent="Guard3" index="3"]
-group_name = "Guard3"
-
-[node name="Explanation" parent="." instance=ExtResource("16_jple7")]
-
-[connection signal="player_caught" from="Player" to="." method="_on_player_player_caught"]
-[connection signal="chase_player" from="Guard" to="." method="_on_guard_chase_player"]
-[connection signal="chest_opened" from="chest" to="Player/PlayerUI/GruelTemperature" method="_on_chest_chest_opened"]
-[connection signal="chest_opened" from="chest4" to="Player/PlayerUI/GruelTemperature" method="_on_chest_chest_opened"]
-[connection signal="chase_player" from="Guard2" to="." method="_on_guard_2_chase_player"]
-[connection signal="body_entered" from="End of Level" to="." method="_on_end_of_level_body_entered"]
-[connection signal="visibility_changed" from="Explanation" to="." method="_on_explanation_visibility_changed"]
-[connection signal="pressed" from="Explanation/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Explanation/Button" to="Explanation" method="_on_button_pressed"]
-
-[editable path="Player"]
-[editable path="Player/visuals/PlayerInteractor"]
-[editable path="Transition"]
-[editable path="Guard2"]
-[editable path="Guard2/visuals/Guard"]
-[editable path="Guard3"]
-[editable path="Guard3/visuals/Guard"]
-[editable path="Explanation"]
+[node name="Guard" parent="." instance=ExtResource("8_po8fd")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 0, 0)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3acnxhbkc3uc"]
+
+[ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="1_1bc06"]
+[ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="2_mg3ul"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ymw4o"]
+sky_top_color = Color(0.207843, 0.254902, 0.321569, 1)
+sky_horizon_color = Color(0.101961, 0.105882, 0.109804, 1)
+
+[sub_resource type="Sky" id="Sky_cu3ij"]
+sky_material = SubResource("ProceduralSkyMaterial_ymw4o")
+
+[sub_resource type="Environment" id="Environment_13sgq"]
+background_mode = 2
+sky = SubResource("Sky_cu3ij")
+ambient_light_source = 3
+ambient_light_color = Color(0.964706, 0.964706, 0.964706, 1)
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.258824, 0.227451, 0.631373, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1091
+
+[node name="CSGBox3D" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.546692, 0)
+material_override = ExtResource("1_1bc06")
+size = Vector3(1, 1.83533, 12.1045)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.212007, 0, -0.977268, 0, 1, 0, 0.977268, 0, -0.212007, -1.93776, 0.531751, -2.38661)
+fov = 72.0505
+near = 0.215
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+shadow_enabled = true
+sky_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_13sgq")
+
+[node name="chest" parent="." instance=ExtResource("2_mg3ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.44186)
+
+[node name="chest2" parent="." instance=ExtResource("2_mg3ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866024, -2.26691, -1.9063)

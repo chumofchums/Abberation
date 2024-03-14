@@ -9,9 +9,8 @@ signal chase_player
 @export var patrol_direction: Node3D
 @onready var model_anim: AnimationPlayer = $visuals/Guard/AnimationPlayer
 
-
 const PATROL_SPEED = 2
-const CHASE_SPEED = 3
+const CHASE_SPEED = 4
 
 var speed = 2
 var acceleration = 10
@@ -22,22 +21,23 @@ var rotation_speed: float = 20.0
 func _ready() -> void:
 	speed = PATROL_SPEED
 	
-
 func _physics_process(delta: float) -> void:
 	var weight := 1.0 - pow(0.5, delta * rotation_speed)
 	if !player_spotted:
 		speed = PATROL_SPEED
 		velocity = patrol_direction.direction * speed
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-patrol_direction.direction.x, -patrol_direction.direction.z), weight)
+		model_anim.play("patrol")
 	else:
+
 		speed = CHASE_SPEED
 		nav.target_position = Globals.Player.global_transform.origin
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
-		
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-direction.x, -direction.z), weight)
-	model_anim.play("patrol")
+		model_anim.play("patrol")
+		model_anim.speed_scale = 1.2
 	move_and_slide()
 
 func _on_vision_timer_timeout() -> void:

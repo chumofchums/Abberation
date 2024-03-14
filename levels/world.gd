@@ -9,6 +9,9 @@ extends Node3D
 @onready var game_music: AudioStreamPlayer = $GameMusic
 @onready var transition_player: AnimationPlayer = $Transition/AnimationPlayer
 @onready var guard_spawn: Node3D = $GuardSpawn
+@onready var game_won_audio: AudioStreamPlayer = $GameWon/GameWonAudio
+@onready var game_won_sfx: AudioStreamPlayer = $GameWon/GameWonSFX
+@onready var explanation: CanvasLayer = $Explanation
 
 var guard = preload("res://enemy/guard.tscn")
 
@@ -22,11 +25,8 @@ func start_cutscene() -> void:
 	cutscene_player.play("cutscene")
 
 func start_explanation():
-	
-	
-	
-	#start_game()
-	pass
+	explanation.visible = true
+	game_music.play()
 
 func start_game():
 	Globals.game_started = true
@@ -35,7 +35,6 @@ func start_game():
 	hearts.visible = true
 	color_rect.visible = false
 	cutscene_complete = true
-	game_music.play()
 
 func increase_music_speed():
 	game_music.pitch_scale = 1.2
@@ -55,3 +54,14 @@ func reset_player():
 	guard_instance.chase_player.connect(_on_guard_chase_player)
 	add_child(guard_instance)
 	transition_player.play("fade_in")
+
+func _on_guard_2_chase_player() -> void:
+	increase_music_speed()
+
+func _on_end_of_level_body_entered(body: Node3D) -> void:
+	game_won_audio.play()
+	game_won_sfx.play()
+
+
+func _on_button_pressed() -> void:
+	start_game()
