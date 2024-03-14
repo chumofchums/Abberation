@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=22 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_man8l"]
 [ext_resource type="PackedScene" uid="uid://can8nnanfex8m" path="res://arch.tscn" id="2_d4agm"]
@@ -12,9 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cg7vrgo2utpw5" path="res://opening_cutscene/intro_cutscene.tscn" id="9_s3dwu"]
 [ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_0hyh6"]
 [ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_n6t48"]
-[ext_resource type="AudioStream" uid="uid://m0tlbukie7qm" path="res://Sound/SFX/APPLAUSE.mp3" id="13_7lyk3"]
-[ext_resource type="Script" path="res://levels/GameWon.gd" id="13_fq28o"]
-[ext_resource type="AudioStream" uid="uid://qxey1taa8juh" path="res://Sound/SFX/fanfare-46385.mp3" id="14_ya1u6"]
 [ext_resource type="PackedScene" uid="uid://dr0stn2epirtr" path="res://enemy/guard_2.tscn" id="15_244ag"]
 [ext_resource type="PackedScene" uid="uid://cnh00c3r0td04" path="res://explanation.tscn" id="16_jple7"]
 
@@ -210,6 +207,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6648, 0, -5.85072)
 [node name="Player" parent="." instance=ExtResource("6_u6vxg")]
 transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -14.6088, -0.0656487, 11.7523)
 
+[node name="CanvasLayer" parent="Player/GameWon" index="2"]
+visible = false
+
 [node name="Guard" parent="." instance=ExtResource("7_ygmut")]
 
 [node name="chest" parent="." instance=ExtResource("8_1o7e2")]
@@ -255,17 +255,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="End of Level"]
 shape = SubResource("BoxShape3D_p6ue3")
 
-[node name="GameWon" type="Node3D" parent="."]
-script = ExtResource("13_fq28o")
-
-[node name="GameWonAudio" type="AudioStreamPlayer" parent="GameWon"]
-stream = ExtResource("13_7lyk3")
-volume_db = -9.782
-
-[node name="GameWonSFX" type="AudioStreamPlayer" parent="GameWon"]
-stream = ExtResource("14_ya1u6")
-volume_db = -3.089
-
 [node name="Guard3" parent="." instance=ExtResource("15_244ag")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7775, 0, -6.32255)
 
@@ -286,6 +275,7 @@ group_name = "Guard3"
 
 [editable path="Player"]
 [editable path="Player/visuals/PlayerInteractor"]
+[editable path="Player/GameWon"]
 [editable path="Transition"]
 [editable path="Guard2"]
 [editable path="Guard2/visuals/Guard"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7vdlgbnnymss"]
+[gd_scene load_steps=32 format=3 uid="uid://c7vdlgbnnymss"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_511gj"]
 [ext_resource type="PackedScene" uid="uid://b7cfcasb7bri1" path="res://interaction/player_interactor.tscn" id="2_ctc5d"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://d0yxmbprvmcji" path="res://Sound/SFX/Wood Hard 5.wav" id="13_yx5nk"]
 [ext_resource type="AudioStream" uid="uid://8ujfmg0ti0gl" path="res://Sound/SFX/sword sheath.wav" id="14_ogwv5"]
 [ext_resource type="AudioStream" uid="uid://xcijmdie6h22" path="res://Sound/SFX/off with his head.wav" id="18_e0fv0"]
+[ext_resource type="PackedScene" uid="uid://2bypk7rtt376" path="res://game_won.tscn" id="20_ca1en"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sip24"]
 
@@ -615,6 +616,14 @@ collision_mask = 9
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00344563, 1.98696, -0.00172234)
 shape = SubResource("CapsuleShape3D_22p1v")
 
+[node name="GameWon" parent="." instance=ExtResource("20_ca1en")]
+
+[node name="CanvasLayer" parent="GameWon" index="2"]
+follow_viewport_enabled = true
+
+[node name="AnimationPlayer" parent="GameWon" index="3"]
+reset_on_save = false
+
 [connection signal="health_zero" from="." to="PlayerUI" method="_on_player_health_zero"]
 [connection signal="gruelTimeout" from="PlayerUI/GruelTemperature" to="FailCanvasLayer/FailScreen" method="_on_gruel_temperature_gruel_timeout"]
 [connection signal="gruel_cooled" from="FailCanvasLayer/FailScreen" to="." method="_on_fail_screen_gruel_cooled"]
@@ -624,3 +633,4 @@ shape = SubResource("CapsuleShape3D_22p1v")
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_area_area_entered"]
 
 [editable path="visuals/PlayerInteractor"]
+[editable path="GameWon"]

@@ -9,12 +9,10 @@ extends Node3D
 @onready var game_music: AudioStreamPlayer = $GameMusic
 @onready var transition_player: AnimationPlayer = $Transition/AnimationPlayer
 @onready var guard_spawn: Node3D = $GuardSpawn
-@onready var game_won_audio: AudioStreamPlayer = $GameWon/GameWonAudio
-@onready var game_won_sfx: AudioStreamPlayer = $GameWon/GameWonSFX
 @onready var explanation: CanvasLayer = $Explanation
+@onready var won_anim: AnimationPlayer = $Player/GameWon/AnimationPlayer
 
 var guard = preload("res://enemy/guard.tscn")
-
 var cutscene_complete: bool = false
 
 func _ready() -> void:
@@ -59,9 +57,10 @@ func _on_guard_2_chase_player() -> void:
 	increase_music_speed()
 
 func _on_end_of_level_body_entered(body: Node3D) -> void:
-	game_won_audio.play()
-	game_won_sfx.play()
-
+	gruel_temp_bar.visible = false
+	hearts.visible = false
+	won_anim.play("game won")
+	Globals.game_started = false
 
 func _on_button_pressed() -> void:
 	start_game()
