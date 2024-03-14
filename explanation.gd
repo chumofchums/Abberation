@@ -8,3 +8,4 @@ func _on_visibility_changed() -> void:
 func _on_button_pressed() -> void:
 	self.visible = false
 	anim.play("onward")
+	Globals.explanation_played = true

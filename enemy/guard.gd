@@ -29,7 +29,6 @@ func _physics_process(delta: float) -> void:
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-patrol_direction.direction.x, -patrol_direction.direction.z), weight)
 		model_anim.play("patrol")
 	else:
-
 		speed = CHASE_SPEED
 		nav.target_position = Globals.Player.global_transform.origin
 		direction = nav.get_next_path_position() - global_position
@@ -59,3 +58,10 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	if area.name == "HurtBox":
 		player_spotted = false
 		queue_free()
+
+func _on_player_player_caught(guard_name) -> void:
+	player_spotted = false
+	#queue_free()
+
+func _on_world_player_won() -> void:
+	self.queue_free()

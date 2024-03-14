@@ -10,9 +10,11 @@ var health_depleted = false
 
 @onready var bar: ProgressBar = $"."
 @onready var fail_canvas_layer: CanvasLayer = $"../../FailCanvasLayer"
+@onready var retry_button: Button = $"../../FailCanvasLayer/FailScreen/VBoxContainer/Retry Button"
 
 func _ready() -> void:
 	bar.value = bar.max_value
+	duration = 30
 
 func _process(delta: float) -> void:
 	if Globals.game_started:
@@ -42,3 +44,12 @@ func _on_player_health_zero() -> void:
 
 func _on_chest_chest_opened() -> void:
 	duration += chest_opened_bonus
+
+func _on_chest_2_chest_opened() -> void:
+	duration += chest_opened_bonus
+
+func _on_chest_3_chest_opened() -> void:
+	duration += chest_opened_bonus
+
+func retry_button_focus():
+	retry_button.grab_focus()

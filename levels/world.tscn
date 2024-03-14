@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmxvgauvx41nb"]
+[gd_scene load_steps=53 format=3 uid="uid://cmxvgauvx41nb"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_man8l"]
 [ext_resource type="PackedScene" uid="uid://can8nnanfex8m" path="res://arch.tscn" id="2_d4agm"]
@@ -6,14 +6,34 @@
 [ext_resource type="Material" uid="uid://dpwrvtysthavr" path="res://materials/hedgeWall.tres" id="3_qnap4"]
 [ext_resource type="Texture2D" uid="uid://e16ve44ewb5t" path="res://textures/grass/Grass_04.png" id="4_huh6c"]
 [ext_resource type="Texture2D" uid="uid://dq1jrks0lr0ky" path="res://textures/grass/Grass_04_Nrm.png" id="5_vshxp"]
-[ext_resource type="PackedScene" uid="uid://c7vdlgbnnymss" path="res://player/player.tscn" id="6_u6vxg"]
+[ext_resource type="Script" path="res://player/Player.gd" id="7_h4hwl"]
 [ext_resource type="PackedScene" uid="uid://dn05ucbbktbtv" path="res://enemy/guard.tscn" id="7_ygmut"]
 [ext_resource type="PackedScene" uid="uid://cpb1vm3k708ep" path="res://chest.tscn" id="8_1o7e2"]
+[ext_resource type="PackedScene" uid="uid://b7cfcasb7bri1" path="res://interaction/player_interactor.tscn" id="8_uvpns"]
+[ext_resource type="PackedScene" uid="uid://8r5wwsrjiw33" path="res://player/delivery_boy.tscn" id="9_3er5v"]
 [ext_resource type="PackedScene" uid="uid://cg7vrgo2utpw5" path="res://opening_cutscene/intro_cutscene.tscn" id="9_s3dwu"]
 [ext_resource type="AudioStream" uid="uid://cjfw1a2xlqgjw" path="res://Sound/Music/Garden_Loop.mp3" id="10_0hyh6"]
+[ext_resource type="Script" path="res://player/RayCastCull.gd" id="10_ujfy8"]
+[ext_resource type="PackedScene" uid="uid://cviojqwfh4sha" path="res://enemy/guard_3.tscn" id="10_ulgvo"]
 [ext_resource type="PackedScene" uid="uid://50501oi4kxj2" path="res://transition.tscn" id="11_n6t48"]
+[ext_resource type="PackedScene" uid="uid://dcw14d4nl5vn6" path="res://fireflies.tscn" id="11_ybmmh"]
+[ext_resource type="Script" path="res://player/PlayerUI.gd" id="12_b81qe"]
+[ext_resource type="PackedScene" uid="uid://cy4o5ioedylql" path="res://player/heart_container.tscn" id="13_ycq8g"]
+[ext_resource type="Script" path="res://player/GruelTemperature.gd" id="14_vu5tx"]
+[ext_resource type="Script" path="res://player/FailCanvasLayer.gd" id="15_0ybhv"]
 [ext_resource type="PackedScene" uid="uid://dr0stn2epirtr" path="res://enemy/guard_2.tscn" id="15_244ag"]
 [ext_resource type="PackedScene" uid="uid://cnh00c3r0td04" path="res://explanation.tscn" id="16_jple7"]
+[ext_resource type="Theme" uid="uid://cmv7tmblhvfuo" path="res://menu_theme.tres" id="16_uk2jy"]
+[ext_resource type="Script" path="res://player/FailScreen.gd" id="17_g32kl"]
+[ext_resource type="Texture2D" uid="uid://gtsfa0ch6jcr" path="res://textures/sword.png" id="18_f1jch"]
+[ext_resource type="Texture2D" uid="uid://owbgc06g6c5n" path="res://textures/wood_shield.png" id="19_1nbv0"]
+[ext_resource type="AudioStream" uid="uid://buyt0gf22evp4" path="res://Sound/SFX/twang.wav" id="20_2lcin"]
+[ext_resource type="AudioStream" uid="uid://3j377x76akj8" path="res://Sound/SFX/Wood Hard 8.wav" id="21_4rwmr"]
+[ext_resource type="AudioStream" uid="uid://bif4iq6vhwys1" path="res://Sound/SFX/Wood Hard 1.wav" id="22_e826s"]
+[ext_resource type="AudioStream" uid="uid://d0yxmbprvmcji" path="res://Sound/SFX/Wood Hard 5.wav" id="23_n7dht"]
+[ext_resource type="AudioStream" uid="uid://xcijmdie6h22" path="res://Sound/SFX/off with his head.wav" id="24_f7noj"]
+[ext_resource type="AudioStream" uid="uid://8ujfmg0ti0gl" path="res://Sound/SFX/sword sheath.wav" id="25_bcn8u"]
+[ext_resource type="PackedScene" uid="uid://2bypk7rtt376" path="res://game_won.tscn" id="26_np1ug"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pjvym"]
 sky_top_color = Color(0.207843, 0.254902, 0.321569, 1)
@@ -48,6 +68,350 @@ normal_texture = ExtResource("5_vshxp")
 uv1_scale = Vector3(12.94, 12.94, 12.94)
 uv1_triplanar = true
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sip24"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x56wk"]
+size = Vector3(1.83789, 2.05371, 2.7666)
+
+[sub_resource type="Animation" id="Animation_aoyxa"]
+resource_name = "to_angled"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngledCam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.14713e-05, 4.26932, -2.84245), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngledCam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.459543, 0.000618111, 0.00121625), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_etfah"]
+resource_name = "to_overhead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngledCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-3.14713e-05, 4.26932, -2.84245)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngledCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.459543, 0.000618111, 0.00121625)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lb7d"]
+_data = {
+"to_angled": SubResource("Animation_aoyxa"),
+"to_overhead": SubResource("Animation_etfah")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y44ri"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_8kmbe"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_y44ri")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxvy"]
+
+[sub_resource type="Animation" id="Animation_lugql"]
+resource_name = "fail_anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FailCanvasLayer/FailScreen/Gruel:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [700, 220]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FailCanvasLayer/FailScreen/Gruel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FailCanvasLayer/FailScreen/Has:theme_override_font_sizes/font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [400, 100]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FailCanvasLayer/FailScreen/Has:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FailCanvasLayer/FailScreen/Cooled:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [630, 230]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FailCanvasLayer/FailScreen/Cooled:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../FailCanvasLayer/FailScreen/Sword:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.2, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(104, 643), Vector2(548, -126)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../FailCanvasLayer/FailScreen/Sword2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.2, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(644, 911), Vector2(218, 174)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../FailCanvasLayer/FailScreen/ColorRect:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3, 3.2, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.545098), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../FailCanvasLayer/FailScreen/VBoxContainer/Retry Button:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.6, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../FailCanvasLayer/FailScreen/VBoxContainer/Menu Button:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.8, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../FailCanvasLayer/FailScreen/Shield:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../FailCanvasLayer/SwordSheathAudio:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../FailCanvasLayer/FailScreen/Gruel/AudioStreamPlayer:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../FailCanvasLayer/FailScreen/Has/AudioStreamPlayer:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../FailCanvasLayer/FailScreen/Cooled/AudioStreamPlayer:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../FailCanvasLayer/FailScreen/Shield/AudioStreamPlayer:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../FailCanvasLayer/FailScreen/Cooled/Off with his head:playing")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(3.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("..")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fail_cutscene_playing"
+}]
+}
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("GruelTemperature")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"retry_button_focus"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivtb2"]
+_data = {
+"fail_anim": SubResource("Animation_lugql")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_22p1v"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6ue3"]
 size = Vector3(3.53418, 3.71338, 1)
 
@@ -56,7 +420,6 @@ script = ExtResource("1_man8l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
 shadow_enabled = true
 sky_mode = 2
 
@@ -69,7 +432,7 @@ environment = SubResource("Environment_0fg2b")
 navigation_mesh = SubResource("NavigationMesh_o18lv")
 
 [node name="Arch" parent="level/NavigationRegion3D" instance=ExtResource("2_d4agm")]
-transform = Transform3D(0.785455, 0, 0, 0, 1.07822, 0, 0, 0, 1, -16.4718, 1, 16.0506)
+transform = Transform3D(0.785455, 0, 0, 0, 1.07822, 0, 0, 0, 1, -16.4718, 1, 17.0506)
 
 [node name="Ground" type="CSGBox3D" parent="level/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423096, -0.05, -0.523041)
@@ -204,19 +567,313 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.24792, 0, -5.85072)
 [node name="Marker3D8" type="Marker3D" parent="level" groups=["Guard3"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6648, 0, -5.85072)
 
-[node name="Player" parent="." instance=ExtResource("6_u6vxg")]
-transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -14.6088, -0.0656487, 11.7523)
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.999993, -0.00349065, 0, 0.00349064, 0.999993, -0.00174533, 6.09233e-06, 0.00174532, 0.999998, -12.1958, -0.0120867, -14.1103)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("7_h4hwl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(2, 7.77078e-10, -9.09495e-13, -1.54296e-10, 2, -2.32831e-10, -3.63798e-12, 0, 2, 0.00344563, 1.98696, -0.00172234)
+shape = SubResource("CapsuleShape3D_sip24")
+
+[node name="visuals" type="Node3D" parent="Player"]
+
+[node name="PlayerInteractor" parent="Player/visuals" instance=ExtResource("8_uvpns")]
+transform = Transform3D(1, 1.55707e-10, 0, -7.71481e-11, 1, 0, -9.09495e-13, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Player/visuals/PlayerInteractor" index="0"]
+transform = Transform3D(1.00001, 9.65478e-08, -1.50521e-10, -5.89856e-09, 1.00002, -2.07219e-08, -4.17913e-10, 5.12227e-09, 1.00005, 0.00378704, 1.08394, -0.885198)
+shape = SubResource("BoxShape3D_x56wk")
+
+[node name="Delivery Boy" parent="Player/visuals" instance=ExtResource("9_3er5v")]
+transform = Transform3D(1.21408e-05, 0.00523594, 0.999987, 0.00174528, 0.999985, -0.00523596, -0.999999, 0.00174532, 3.00246e-06, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="Player/visuals/Delivery Boy"]
+wait_time = 0.5
+
+[node name="camera_boom" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.552738, 0.833355, 0, -0.833355, 0.552738, 0, 9.86911, 5.76155)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/camera_boom"]
+transform = Transform3D(1, -2.07365e-10, -5.29326e-10, -1.45064e-10, 1, -1.01328e-06, 4.63842e-11, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -8.52)
+script = ExtResource("10_ujfy8")
+
+[node name="AngledCam" type="Camera3D" parent="Player/camera_boom"]
+
+[node name="fireflies" parent="Player/camera_boom/AngledCam" instance=ExtResource("11_ybmmh")]
+transform = Transform3D(1, 5.1159e-11, -7.04858e-10, -5.11591e-11, 1, -7.45058e-08, 7.04858e-10, 7.45058e-08, 1, -4.83021e-09, -5.96046e-07, -10.0589)
+
+[node name="CamTransAnimation" type="AnimationPlayer" parent="Player/camera_boom"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_1lb7d")
+}
+
+[node name="PlayerUI" type="CanvasLayer" parent="Player" node_paths=PackedStringArray("player")]
+script = ExtResource("12_b81qe")
+player = NodePath("..")
+
+[node name="HeartContainer" parent="Player/PlayerUI" instance=ExtResource("13_ycq8g")]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 20.0
+offset_right = 64.0
+offset_bottom = 60.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="GruelTemperature" type="ProgressBar" parent="Player/PlayerUI"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 90.0
+offset_bottom = 445.0
+theme = SubResource("Theme_8kmbe")
+step = 0.1
+value = 100.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("14_vu5tx")
+
+[node name="FailCanvasLayer" type="CanvasLayer" parent="Player"]
+script = ExtResource("15_0ybhv")
+
+[node name="FailScreen" type="Panel" parent="Player/FailCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("16_uk2jy")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_agxvy")
+script = ExtResource("17_g32kl")
+
+[node name="Sword" type="TextureRect" parent="Player/FailCanvasLayer/FailScreen"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 643.0
+offset_right = 692.0
+offset_bottom = 1496.0
+rotation = 0.523599
+texture = ExtResource("18_f1jch")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="Sword2" type="TextureRect" parent="Player/FailCanvasLayer/FailScreen"]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 911.0
+offset_right = 1232.0
+offset_bottom = 1764.0
+rotation = -0.523599
+texture = ExtResource("18_f1jch")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="Shield" type="TextureRect" parent="Player/FailCanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -352.0
+offset_right = 304.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_1nbv0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/FailCanvasLayer/FailScreen/Shield"]
+stream = ExtResource("20_2lcin")
+
+[node name="Gruel" type="Label" parent="Player/FailCanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -220.0
+offset_right = 193.499
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 700
+text = "GRUEL"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/FailCanvasLayer/FailScreen/Gruel"]
+stream = ExtResource("21_4rwmr")
+volume_db = -0.563
+
+[node name="MarginContainer" type="MarginContainer" parent="Player/FailCanvasLayer/FailScreen"]
+layout_mode = 2
+offset_left = 446.5
+offset_top = 307.0
+offset_right = 833.5
+offset_bottom = 316.0
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_bottom = 0
+
+[node name="Has" type="Label" parent="Player/FailCanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -98.48
+offset_right = 193.5
+offset_bottom = 15.5202
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 400
+text = "HAS"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/FailCanvasLayer/FailScreen/Has"]
+stream = ExtResource("22_e826s")
+volume_db = -4.472
+
+[node name="MarginContainer2" type="MarginContainer" parent="Player/FailCanvasLayer/FailScreen"]
+layout_mode = 2
+offset_left = 446.5
+offset_top = 404.0
+offset_right = 833.5
+offset_bottom = 413.0
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_bottom = 0
+
+[node name="Cooled" type="Label" parent="Player/FailCanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.5
+offset_top = -29.955
+offset_right = 416.5
+offset_bottom = 230.045
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 630
+text = "COOLED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/FailCanvasLayer/FailScreen/Cooled"]
+stream = ExtResource("23_n7dht")
+volume_db = -3.055
+
+[node name="Off with his head" type="AudioStreamPlayer" parent="Player/FailCanvasLayer/FailScreen/Cooled"]
+stream = ExtResource("24_f7noj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/FailCanvasLayer/FailScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Player/FailCanvasLayer/FailScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Retry Button" type="Button" parent="Player/FailCanvasLayer/FailScreen/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Menu Button")
+focus_neighbor_bottom = NodePath("../Menu Button")
+theme_override_font_sizes/font_size = 40
+text = "RETRY"
+
+[node name="Menu Button" type="Button" parent="Player/FailCanvasLayer/FailScreen/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "MENU"
+
+[node name="MarginContainer" type="MarginContainer" parent="Player/FailCanvasLayer/FailScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Player/FailCanvasLayer/FailScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FailCutscene" type="AnimationPlayer" parent="Player/FailCanvasLayer"]
+reset_on_save = false
+root_node = NodePath("../../PlayerUI")
+libraries = {
+"": SubResource("AnimationLibrary_ivtb2")
+}
+
+[node name="SwordSheathAudio" type="AudioStreamPlayer" parent="Player/FailCanvasLayer"]
+stream = ExtResource("25_bcn8u")
+
+[node name="HurtBox" type="Area3D" parent="Player"]
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/HurtBox"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00344563, 1.98696, -0.00172234)
+shape = SubResource("CapsuleShape3D_22p1v")
+
+[node name="GameWon" parent="Player" instance=ExtResource("26_np1ug")]
 
 [node name="CanvasLayer" parent="Player/GameWon" index="2"]
 visible = false
+follow_viewport_enabled = true
+
+[node name="AnimationPlayer" parent="Player/GameWon" index="3"]
+reset_on_save = false
 
 [node name="Guard" parent="." instance=ExtResource("7_ygmut")]
+
+[node name="Guard2" parent="." instance=ExtResource("15_244ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7775, 0, -6.32255)
+
+[node name="Guard3" parent="." instance=ExtResource("10_ulgvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 
 [node name="chest" parent="." instance=ExtResource("8_1o7e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61347, 0.499725, -14.5784)
 
 [node name="chest4" parent="." instance=ExtResource("8_1o7e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0063, 0.499725, 14.6513)
+
+[node name="chest2" parent="." instance=ExtResource("8_1o7e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2533, 0.595536, -6.15674)
+
+[node name="chest3" parent="." instance=ExtResource("8_1o7e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0228, 0.516836, -0.747771)
 
 [node name="IntroCutscene" parent="." instance=ExtResource("9_s3dwu")]
 
@@ -236,17 +893,11 @@ autostart = true
 
 [node name="GuardSpawn" type="Node3D" parent="."]
 
-[node name="chest2" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2533, 0.595536, -6.15674)
+[node name="GuardSpawn3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13165, 0, 13.9482)
 
-[node name="chest3" parent="." instance=ExtResource("8_1o7e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0228, 0.516836, -0.747771)
-
-[node name="Guard2" parent="." instance=ExtResource("7_ygmut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52325, 0, 14.2902)
-
-[node name="patrol" parent="Guard2" index="3"]
-group_name = "Guard2"
+[node name="GuardSpawn2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13165, 0, -5.85552)
 
 [node name="End of Level" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2817, 1.84925, 17.4894)
@@ -255,30 +906,39 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="End of Level"]
 shape = SubResource("BoxShape3D_p6ue3")
 
-[node name="Guard3" parent="." instance=ExtResource("15_244ag")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7775, 0, -6.32255)
-
-[node name="patrol" parent="Guard3" index="3"]
-group_name = "Guard3"
-
 [node name="Explanation" parent="." instance=ExtResource("16_jple7")]
 
+[node name="TextureRect" parent="Explanation" index="0"]
+mouse_filter = 2
+
+[connection signal="player_won" from="." to="Player" method="_on_world_player_won"]
+[connection signal="player_won" from="." to="Guard" method="_on_world_player_won"]
+[connection signal="health_zero" from="Player" to="Player/PlayerUI" method="_on_player_health_zero"]
 [connection signal="player_caught" from="Player" to="." method="_on_player_player_caught"]
+[connection signal="player_caught" from="Player" to="Guard" method="_on_player_player_caught"]
+[connection signal="player_caught" from="Player" to="Guard2" method="_on_player_player_caught"]
+[connection signal="player_caught" from="Player" to="Guard3" method="_on_player_player_caught"]
+[connection signal="gruelTimeout" from="Player/PlayerUI/GruelTemperature" to="Player/FailCanvasLayer/FailScreen" method="_on_gruel_temperature_gruel_timeout"]
+[connection signal="gruel_cooled" from="Player/FailCanvasLayer/FailScreen" to="Player" method="_on_fail_screen_gruel_cooled"]
+[connection signal="gruel_cooled" from="Player/FailCanvasLayer/FailScreen" to="Player/PlayerUI" method="_on_fail_screen_gruel_cooled"]
+[connection signal="pressed" from="Player/FailCanvasLayer/FailScreen/VBoxContainer/Retry Button" to="Player/FailCanvasLayer" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Player/FailCanvasLayer/FailScreen/VBoxContainer/Menu Button" to="Player/FailCanvasLayer" method="_on_menu_button_pressed"]
+[connection signal="area_entered" from="Player/HurtBox" to="Player" method="_on_hit_area_area_entered"]
 [connection signal="chase_player" from="Guard" to="." method="_on_guard_chase_player"]
+[connection signal="chase_player" from="Guard2" to="." method="_on_guard_2_chase_player"]
+[connection signal="chase_player" from="Guard3" to="." method="_on_guard_3_chase_player"]
 [connection signal="chest_opened" from="chest" to="Player/PlayerUI/GruelTemperature" method="_on_chest_chest_opened"]
 [connection signal="chest_opened" from="chest4" to="Player/PlayerUI/GruelTemperature" method="_on_chest_chest_opened"]
-[connection signal="chase_player" from="Guard2" to="." method="_on_guard_2_chase_player"]
+[connection signal="chest_opened" from="chest2" to="Player/PlayerUI/GruelTemperature" method="_on_chest_2_chest_opened"]
+[connection signal="chest_opened" from="chest3" to="Player/PlayerUI/GruelTemperature" method="_on_chest_3_chest_opened"]
 [connection signal="body_entered" from="End of Level" to="." method="_on_end_of_level_body_entered"]
 [connection signal="visibility_changed" from="Explanation" to="." method="_on_explanation_visibility_changed"]
 [connection signal="pressed" from="Explanation/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Explanation/Button" to="Explanation" method="_on_button_pressed"]
 
-[editable path="Player"]
 [editable path="Player/visuals/PlayerInteractor"]
 [editable path="Player/GameWon"]
-[editable path="Transition"]
 [editable path="Guard2"]
 [editable path="Guard2/visuals/Guard"]
-[editable path="Guard3"]
-[editable path="Guard3/visuals/Guard"]
+[editable path="Transition"]
 [editable path="Explanation"]

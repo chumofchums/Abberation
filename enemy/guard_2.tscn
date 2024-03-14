@@ -4,4 +4,7 @@
 
 [node name="Guard2" instance=ExtResource("1_1dt1p")]
 
+[node name="patrol" parent="." index="3"]
+group_name = "Guard3"
+
 [editable path="visuals/Guard"]

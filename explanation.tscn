@@ -1,38 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnh00c3r0td04"]
+[gd_scene load_steps=11 format=3 uid="uid://cnh00c3r0td04"]
 
-[ext_resource type="Script" path="res://explanation.gd" id="1_3end5"]
+[ext_resource type="Script" path="res://Explanation.gd" id="1_3end5"]
 [ext_resource type="Texture2D" uid="uid://u1dhjtdq2677" path="res://textures/paper scroll.png" id="1_ve4bp"]
 [ext_resource type="FontFile" uid="uid://dlnbj6iiqfyai" path="res://fonts/MedievalSharp-Regular.ttf" id="2_2kw5v"]
 [ext_resource type="FontFile" uid="uid://c08o0lgvak47i" path="res://fonts/Ancient Medium.ttf" id="3_x0njb"]
 [ext_resource type="Script" path="res://onward_button.gd" id="4_sjvss"]
-
-[sub_resource type="Animation" id="Animation_7rb8s"]
-resource_name = "type"
-length = 8.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/MarginContainer/Label:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4, 1.6, 1.7, 1.9, 2.7, 3, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.2, 0.2, 0.221, 0.22, 0.342353, 0.388235, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Button:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
+[ext_resource type="AudioStream" uid="uid://bjdisxhidx7wp" path="res://Sound/SFX/sword_clink.wav" id="6_hlhbn"]
 
 [sub_resource type="Animation" id="Animation_vdtgk"]
 length = 0.001
@@ -101,6 +74,48 @@ tracks/1/keys = {
 "values": [Vector2(-3, 5), Vector2(-3, 764)]
 }
 
+[sub_resource type="Animation" id="Animation_7rb8s"]
+resource_name = "type"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/MarginContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.6, 1.7, 1.9, 2.7, 3, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.2, 0.221, 0.22, 0.342353, 0.388235, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_button_focus"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4no3v"]
 _data = {
 "RESET": SubResource("Animation_vdtgk"),
@@ -151,9 +166,7 @@ or the Duke will have your Head.
 The Wizard may have left some Chests on his way out of the Estate - I've heard they're the hot new thing."
 horizontal_alignment = 1
 autowrap_mode = 3
-visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -179,4 +192,8 @@ theme_override_font_sizes/font_size = 30
 text = "ONWARD"
 script = ExtResource("4_sjvss")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hlhbn")
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
